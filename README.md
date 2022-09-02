@@ -58,3 +58,10 @@ Menjalankan aplikasi
 ```bash
 php artisan serve
 ```
+
+## Ketentuan Nama Branch
+>- **main** →  untuk productions
+>- **development** → untuk staging
+>- **feature/feature-name* ** → untuk membuat fitur baru atau mengerjakan task (card) baru 
+>- **issue/issue-name* ** → untuk memperbaiki issue/permasalahan/kekurangan dari code yang sudah dikerjakan
+>- **bugfix/bug-name* ** → untuk mengatasi bug yang muncul dari code yang sudah dikerjakan
