@@ -1,4 +1,4 @@
-@extends('errors.illustrated-layout')
+@extends('errors.ilustrasi')
 
 @section('title', __('Server Error'))
 @section('code', '500')
