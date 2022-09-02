@@ -2,12 +2,18 @@
 <html lang="en">
 
 <head>
+    <title>
+        Kampus Gratis
+    </title>
+
     {{-- ============== HEADER ============== --}}
     @include('_partial._header')
     {{-- ==============. HEADER ============== --}}
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
+
 
     {{-- ============== SIDEBAR ============== --}}
     @include('_partial._sidebar')

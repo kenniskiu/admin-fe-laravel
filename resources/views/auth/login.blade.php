@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <title>
+        Kampus Gratis || Login
+    </title>
+
     {{-- Header --}}
     @include('_partial._header')
 </head>
