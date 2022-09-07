@@ -21,6 +21,6 @@ Route::get('/dashboard-admin', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/table', function () {
-    return view('admin.tabel');
+Route::get('/test', function () {
+    return view('admin.Table');
 });
