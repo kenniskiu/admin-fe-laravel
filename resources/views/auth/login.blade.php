@@ -59,8 +59,10 @@
                                 <img src="{{ asset('assets/img/shapes/pattern-lines.svg') }}"alt="pattern-lines"
                                     class="position-absolute opacity-4 start-0">
                                 <div class="position-relative">
-                                    <img class="max-width-500 w-30 position-relative z-index-2"
-                                        src="{{ asset('assets/img/KGLogo4.png') }}" alt="chat-img">
+                                    <a href="/dashboard-admin">
+                                        <img class="max-width-500 w-30 position-relative z-index-2"
+                                            src="{{ asset('assets/img/KGLogo4.png') }}" alt="chat-img">
+                                    </a>
                                 </div>
                                 <h4 class="mt-5 text-white font-weight-bolder">Selamat Datang Di Kampus Gratis</h4>
                                 {{-- <p class="text-white">The more effortless the writing looks, the more effort the
