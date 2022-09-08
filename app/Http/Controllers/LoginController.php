@@ -13,7 +13,7 @@ class LoginController extends Controller
         try {
             return view('auth.login');
         } catch (\Throwable $th) {
-            // return redirect('/')->with('toast_error',  'Halaman tidak dapat di akses! ');
+            return redirect('/')->with('toast_error',  'Halaman tidak dapat di akses! ');
         }
     }
 
@@ -27,7 +27,7 @@ class LoginController extends Controller
         if (Auth::attempt($validate)) {
             $request->session()->regenerate();
             return redirect()
-                ->intended('/admin');
+                ->intended('/dashboard-admin')->with('toast_success', 'Berhasil login!');
         } else {
             return redirect()
                 ->back()
@@ -37,10 +37,16 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        try {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect('/')->with('toast_success', 'Berhasil Logout!');
+        } catch (\Throwable $th) {
+            return redirect()
+            ->back()
+            ->with('toast_error',  "Gagal Logout!");
+        }
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
     }
 }
