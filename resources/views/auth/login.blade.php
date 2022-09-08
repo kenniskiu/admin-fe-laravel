@@ -24,13 +24,14 @@
                                     <p class="mb-0">Masukan email dan password</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form">
+                                    <form role="form" action="/login" method="POST" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg"
+                                            <input name="email" type="email" class="form-control form-control-lg"
                                                 placeholder="Email" aria-label="Email">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg"
+                                            <input name="password" type="password" class="form-control form-control-lg"
                                                 placeholder="Password" aria-label="Password">
                                         </div>
                                         {{-- <div class="form-check form-switch">
@@ -38,7 +39,7 @@
                                             <label class="form-check-label" for="rememberMe">Remember me</label>
                                         </div> --}}
                                         <div class="text-center">
-                                            <button type="button"
+                                            <button type="submit"
                                                 class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Login</button>
                                         </div>
                                     </form>
