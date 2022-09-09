@@ -125,6 +125,9 @@
     @include('_partial._assetJs')
     {{-- ============== ASSET JS============== --}}
 
+    {{-- Sweetalert --}}
+    @include('sweetalert::alert')
+
 </body>
 
 </html>

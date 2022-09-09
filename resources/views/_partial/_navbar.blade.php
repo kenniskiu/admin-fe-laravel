@@ -86,13 +86,16 @@
                                                     alt="user image">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
+
                                                 <h6 class="text-sm font-weight-normal mb-1">
-                                                    <span class="font-weight-bold">New message</span> from Laur
+                                                    <a href="/logout"> <span class="font-weight-bold">Klik</span> Ini
+                                                        logout</a>
                                                 </h6>
                                                 <p class="text-xs text-secondary mb-0">
                                                     <i class="fa fa-clock me-1"></i>
                                                     13 minutes ago
                                                 </p>
+
                                             </div>
                                         </div>
                                     </a>

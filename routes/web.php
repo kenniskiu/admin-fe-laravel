@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
+// Login
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'auth']);
+Route::get('/logout', [LoginController::class, 'logout']);
+
+// Bisa di akses jika login
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/dashboard-admin', function () {
+        return view('admin.dashboard');
+    });
+
 });
 
-Route::get('/dashboard-admin', function () {
-    return view('admin.dashboard');
-});
-
+// Tidak perlu login pun bisa di akses :)
 Route::get('/test', function () {
     return view('admin.Table');
 });
