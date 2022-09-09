@@ -21,10 +21,17 @@
                     </div>
                     <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-flex align-items-center">
-                            <a href="/" class="nav-link text-body font-weight-bold px-0">
-                                <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign In</span>
-                            </a>
+                            @auth
+                                <a href="/logout" class="nav-link text-body font-weight-bold px-0">
+                                    <i class="fa fa-user me-sm-1"></i>
+                                    <span class="d-sm-inline d-none">Logout</span>
+                                </a>
+                            @else
+                                <a href="/" class="nav-link text-body font-weight-bold px-0">
+                                    <i class="fa fa-user me-sm-1"></i>
+                                    <span class="d-sm-inline d-none">Sign In</span>
+                                </a>
+                            @endauth
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -57,8 +64,7 @@
                                             <div class="d-flex flex-column justify-content-center">
 
                                                 <h6 class="text-sm font-weight-normal mb-1">
-                                                    <a href="/logout"> <span class="font-weight-bold">Klik</span> Ini
-                                                        logout</a>
+                                                    <span class="font-weight-bold">Klik</span>
                                                 </h6>
                                                 <p class="text-xs text-secondary mb-0">
                                                     <i class="fa fa-clock me-1"></i>
