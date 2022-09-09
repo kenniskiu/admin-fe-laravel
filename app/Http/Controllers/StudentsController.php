@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Students;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -13,7 +14,14 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        return view('admin.students.students');
+        try {
+            $students = Students::all();
+            return view('admin.students.students', [
+                'data' => $students
+            ]);
+        } catch (\Throwable $th) {
+            return redirect('/')->with('toast_error',  'Halaman tidak dapat di akses! ');
+        }
     }
 
     /**

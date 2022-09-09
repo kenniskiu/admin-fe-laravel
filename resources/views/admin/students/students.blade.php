@@ -2,6 +2,37 @@
 
 
 @section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm">
+                <a class="opacity-3 text-dark" href="javascript:;">
+                    <svg width="12px" height="12px" class="mb-1" viewBox="0 0 45 40" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>Kampus Gratis </title>
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-1716.000000, -439.000000)" fill="#252f40" fill-rule="nonzero">
+                                <g transform="translate(1716.000000, 291.000000)">
+                                    <g transform="translate(0.000000, 148.000000)">
+                                        <path
+                                            d="M46.7199583,10.7414583 L40.8449583,0.949791667 C40.4909749,0.360605034 39.8540131,0 39.1666667,0 L7.83333333,0 C7.1459869,0 6.50902508,0.360605034 6.15504167,0.949791667 L0.280041667,10.7414583 C0.0969176761,11.0460037 -1.23209662e-05,11.3946378 -1.23209662e-05,11.75 C-0.00758042603,16.0663731 3.48367543,19.5725301 7.80004167,19.5833333 L7.81570833,19.5833333 C9.75003686,19.5882688 11.6168794,18.8726691 13.0522917,17.5760417 C16.0171492,20.2556967 20.5292675,20.2556967 23.494125,17.5760417 C26.4604562,20.2616016 30.9794188,20.2616016 33.94575,17.5760417 C36.2421905,19.6477597 39.5441143,20.1708521 42.3684437,18.9103691 C45.1927731,17.649886 47.0084685,14.8428276 47.0000295,11.75 C47.0000295,11.3946378 46.9030823,11.0460037 46.7199583,10.7414583 Z">
+                                        </path>
+                                        <path
+                                            d="M39.198,22.4912623 C37.3776246,22.4928106 35.5817531,22.0149171 33.951625,21.0951667 L33.92225,21.1107282 C31.1430221,22.6838032 27.9255001,22.9318916 24.9844167,21.7998837 C24.4750389,21.605469 23.9777983,21.3722567 23.4960833,21.1018359 L23.4745417,21.1129513 C20.6961809,22.6871153 17.4786145,22.9344611 14.5386667,21.7998837 C14.029926,21.6054643 13.533337,21.3722507 13.0522917,21.1018359 C11.4250962,22.0190609 9.63246555,22.4947009 7.81570833,22.4912623 C7.16510551,22.4842162 6.51607673,22.4173045 5.875,22.2911849 L5.875,44.7220845 C5.875,45.9498589 6.7517757,46.9451667 7.83333333,46.9451667 L19.5833333,46.9451667 L19.5833333,33.6066734 L27.4166667,33.6066734 L27.4166667,46.9451667 L39.1666667,46.9451667 C40.2482243,46.9451667 41.125,45.9498589 41.125,44.7220845 L41.125,22.2822926 C40.4887822,22.4116582 39.8442868,22.4815492 39.198,22.4912623 Z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+            </li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
+            </li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Students</li>
+        </ol>
+        <h6 class="font-weight-bolder mb-0">Students</h6>
+    </nav>
+
     <div class="row mt-4">
         <div class="col-12">
             <div class="card">
@@ -9,51 +40,16 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">All Products</h5>
-                            <p class="text-sm mb-0">
+                            <h5 class="mb-0">All Students</h5>
+                            {{-- <p class="text-sm mb-0">
                                 A lightweight, extendable, dependency-free javascript HTML table plugin.
-                            </p>
+                            </p> --}}
                         </div>
                         <div class="ms-auto my-auto mt-lg-0 mt-4">
                             <div class="ms-auto my-auto">
-                                <a href="./new-product.html" class="btn bg-gradient-primary btn-sm mb-0"
-                                    target="_blank">+&nbsp; New Product</a>
-                                <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal"
-                                    data-bs-target="#import">
-                                    Import
-                                </button>
-                                <div class="modal fade" id="import" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog mt-lg-10">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Import CSV</h5>
-                                                <i class="fas fa-upload ms-3" aria-hidden="true"></i>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>You can browse your computer for a file.</p>
-                                                <input type="text" placeholder="Browse file..." class="form-control mb-3"
-                                                    onfocus="focused(this)" onfocusout="defocused(this)">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="importCheck" checked="">
-                                                    <label class="custom-control-label" for="importCheck">I accept the
-                                                        terms
-                                                        and conditions</label>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn bg-gradient-secondary btn-sm"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button"
-                                                    class="btn bg-gradient-primary btn-sm">Upload</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1" data-type="csv"
-                                    type="button" name="button">Export</button>
+                                <a href="" class="btn bg-gradient-primary btn-sm mb-0" target="_blank">+&nbsp;
+                                    New Students
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -62,490 +58,44 @@
                     <table class="table table-flus datatable-basic">
                         <thead class="thead-light">
                             <tr>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Position
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Full Name
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Office
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Program
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Age</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Start
-                                    date</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Salary
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Tiger Nixon</td>
-                                <td class="text-sm font-weight-normal">System Architect</td>
-                                <td class="text-sm font-weight-normal">Edinburgh</td>
-                                <td class="text-sm font-weight-normal">61</td>
-                                <td>
-                                    <span class="badge badge-danger badge-sm">Out of Stock</span>
-                                </td>
-                                <td class="text-sm">
-                                    <a href="javascript:;" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Preview product">
-                                        <i class="fas fa-eye text-secondary" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Edit product">
-                                        <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                        <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Garrett Winters</td>
-                                <td class="text-sm font-weight-normal">Accountant</td>
-                                <td class="text-sm font-weight-normal">Tokyo</td>
-                                <td class="text-sm font-weight-normal">63</td>
-                                <td class="text-sm font-weight-normal">2011/07/25</td>
-                                <td class="text-sm font-weight-normal">$170,750</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Ashton Cox</td>
-                                <td class="text-sm font-weight-normal">Junior Technical Author</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">66</td>
-                                <td class="text-sm font-weight-normal">2009/01/12</td>
-                                <td class="text-sm font-weight-normal">$86,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Cedric Kelly</td>
-                                <td class="text-sm font-weight-normal">Senior Javascript Developer</td>
-                                <td class="text-sm font-weight-normal">Edinburgh</td>
-                                <td class="text-sm font-weight-normal">22</td>
-                                <td class="text-sm font-weight-normal">2012/03/29</td>
-                                <td class="text-sm font-weight-normal">$433,060</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Airi Satou</td>
-                                <td class="text-sm font-weight-normal">Accountant</td>
-                                <td class="text-sm font-weight-normal">Tokyo</td>
-                                <td class="text-sm font-weight-normal">33</td>
-                                <td class="text-sm font-weight-normal">2008/11/28</td>
-                                <td class="text-sm font-weight-normal">$162,700</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Brielle Williamson</td>
-                                <td class="text-sm font-weight-normal">Integration Specialist</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">61</td>
-                                <td class="text-sm font-weight-normal">2012/12/02</td>
-                                <td class="text-sm font-weight-normal">$372,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Herrod Chandler</td>
-                                <td class="text-sm font-weight-normal">Sales Assistant</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">59</td>
-                                <td class="text-sm font-weight-normal">2012/08/06</td>
-                                <td class="text-sm font-weight-normal">$137,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Rhona Davidson</td>
-                                <td class="text-sm font-weight-normal">Integration Specialist</td>
-                                <td class="text-sm font-weight-normal">Tokyo</td>
-                                <td class="text-sm font-weight-normal">55</td>
-                                <td class="text-sm font-weight-normal">2010/10/14</td>
-                                <td class="text-sm font-weight-normal">$327,900</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Colleen Hurst</td>
-                                <td class="text-sm font-weight-normal">Javascript Developer</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">39</td>
-                                <td class="text-sm font-weight-normal">2009/09/15</td>
-                                <td class="text-sm font-weight-normal">$205,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Sonya Frost</td>
-                                <td class="text-sm font-weight-normal">Software Engineer</td>
-                                <td class="text-sm font-weight-normal">Edinburgh</td>
-                                <td class="text-sm font-weight-normal">23</td>
-                                <td class="text-sm font-weight-normal">2008/12/13</td>
-                                <td class="text-sm font-weight-normal">$103,600</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Jena Gaines</td>
-                                <td class="text-sm font-weight-normal">Office Manager</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">30</td>
-                                <td class="text-sm font-weight-normal">2008/12/19</td>
-                                <td class="text-sm font-weight-normal">$90,560</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Quinn Flynn</td>
-                                <td class="text-sm font-weight-normal">Support Lead</td>
-                                <td class="text-sm font-weight-normal">Edinburgh</td>
-                                <td class="text-sm font-weight-normal">22</td>
-                                <td class="text-sm font-weight-normal">2013/03/03</td>
-                                <td class="text-sm font-weight-normal">$342,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Charde Marshall</td>
-                                <td class="text-sm font-weight-normal">Regional Director</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">36</td>
-                                <td class="text-sm font-weight-normal">2008/10/16</td>
-                                <td class="text-sm font-weight-normal">$470,600</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Haley Kennedy</td>
-                                <td class="text-sm font-weight-normal">Senior Marketing Designer</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">43</td>
-                                <td class="text-sm font-weight-normal">2012/12/18</td>
-                                <td class="text-sm font-weight-normal">$313,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Tatyana Fitzpatrick</td>
-                                <td class="text-sm font-weight-normal">Regional Director</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">19</td>
-                                <td class="text-sm font-weight-normal">2010/03/17</td>
-                                <td class="text-sm font-weight-normal">$385,750</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Michael Silva</td>
-                                <td class="text-sm font-weight-normal">Marketing Designer</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">66</td>
-                                <td class="text-sm font-weight-normal">2012/11/27</td>
-                                <td class="text-sm font-weight-normal">$198,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Paul Byrd</td>
-                                <td class="text-sm font-weight-normal">Chief Financial Officer (CFO)</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">64</td>
-                                <td class="text-sm font-weight-normal">2010/06/09</td>
-                                <td class="text-sm font-weight-normal">$725,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Gloria Little</td>
-                                <td class="text-sm font-weight-normal">Systems Administrator</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">59</td>
-                                <td class="text-sm font-weight-normal">2009/04/10</td>
-                                <td class="text-sm font-weight-normal">$237,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Bradley Greer</td>
-                                <td class="text-sm font-weight-normal">Software Engineer</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">41</td>
-                                <td class="text-sm font-weight-normal">2012/10/13</td>
-                                <td class="text-sm font-weight-normal">$132,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Dai Rios</td>
-                                <td class="text-sm font-weight-normal">Personnel Lead</td>
-                                <td class="text-sm font-weight-normal">Edinburgh</td>
-                                <td class="text-sm font-weight-normal">35</td>
-                                <td class="text-sm font-weight-normal">2012/09/26</td>
-                                <td class="text-sm font-weight-normal">$217,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Jenette Caldwell</td>
-                                <td class="text-sm font-weight-normal">Development Lead</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">30</td>
-                                <td class="text-sm font-weight-normal">2011/09/03</td>
-                                <td class="text-sm font-weight-normal">$345,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Yuri Berry</td>
-                                <td class="text-sm font-weight-normal">Chief Marketing Officer (CMO)</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">40</td>
-                                <td class="text-sm font-weight-normal">2009/06/25</td>
-                                <td class="text-sm font-weight-normal">$675,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Caesar Vance</td>
-                                <td class="text-sm font-weight-normal">Pre-Sales Support</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">21</td>
-                                <td class="text-sm font-weight-normal">2011/12/12</td>
-                                <td class="text-sm font-weight-normal">$106,450</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Doris Wilder</td>
-                                <td class="text-sm font-weight-normal">Sales Assistant</td>
-                                <td class="text-sm font-weight-normal">Sidney</td>
-                                <td class="text-sm font-weight-normal">23</td>
-                                <td class="text-sm font-weight-normal">2010/09/20</td>
-                                <td class="text-sm font-weight-normal">$85,600</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Angelica Ramos</td>
-                                <td class="text-sm font-weight-normal">Chief Executive Officer (CEO)</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">47</td>
-                                <td class="text-sm font-weight-normal">2009/10/09</td>
-                                <td class="text-sm font-weight-normal">$1,200,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Gavin Joyce</td>
-                                <td class="text-sm font-weight-normal">Developer</td>
-                                <td class="text-sm font-weight-normal">Edinburgh</td>
-                                <td class="text-sm font-weight-normal">42</td>
-                                <td class="text-sm font-weight-normal">2010/12/22</td>
-                                <td class="text-sm font-weight-normal">$92,575</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Jennifer Chang</td>
-                                <td class="text-sm font-weight-normal">Regional Director</td>
-                                <td class="text-sm font-weight-normal">Singapore</td>
-                                <td class="text-sm font-weight-normal">28</td>
-                                <td class="text-sm font-weight-normal">2010/11/14</td>
-                                <td class="text-sm font-weight-normal">$357,650</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Brenden Wagner</td>
-                                <td class="text-sm font-weight-normal">Software Engineer</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">28</td>
-                                <td class="text-sm font-weight-normal">2011/06/07</td>
-                                <td class="text-sm font-weight-normal">$206,850</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Fiona Green</td>
-                                <td class="text-sm font-weight-normal">Chief Operating Officer (COO)</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">48</td>
-                                <td class="text-sm font-weight-normal">2010/03/11</td>
-                                <td class="text-sm font-weight-normal">$850,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Shou Itou</td>
-                                <td class="text-sm font-weight-normal">Regional Marketing</td>
-                                <td class="text-sm font-weight-normal">Tokyo</td>
-                                <td class="text-sm font-weight-normal">20</td>
-                                <td class="text-sm font-weight-normal">2011/08/14</td>
-                                <td class="text-sm font-weight-normal">$163,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Michelle House</td>
-                                <td class="text-sm font-weight-normal">Integration Specialist</td>
-                                <td class="text-sm font-weight-normal">Sidney</td>
-                                <td class="text-sm font-weight-normal">37</td>
-                                <td class="text-sm font-weight-normal">2011/06/02</td>
-                                <td class="text-sm font-weight-normal">$95,400</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Suki Burks</td>
-                                <td class="text-sm font-weight-normal">Developer</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">53</td>
-                                <td class="text-sm font-weight-normal">2009/10/22</td>
-                                <td class="text-sm font-weight-normal">$114,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Prescott Bartlett</td>
-                                <td class="text-sm font-weight-normal">Technical Author</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">27</td>
-                                <td class="text-sm font-weight-normal">2011/05/07</td>
-                                <td class="text-sm font-weight-normal">$145,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Gavin Cortez</td>
-                                <td class="text-sm font-weight-normal">Team Leader</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">22</td>
-                                <td class="text-sm font-weight-normal">2008/10/26</td>
-                                <td class="text-sm font-weight-normal">$235,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Martena Mccray</td>
-                                <td class="text-sm font-weight-normal">Post-Sales support</td>
-                                <td class="text-sm font-weight-normal">Edinburgh</td>
-                                <td class="text-sm font-weight-normal">46</td>
-                                <td class="text-sm font-weight-normal">2011/03/09</td>
-                                <td class="text-sm font-weight-normal">$324,050</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Unity Butler</td>
-                                <td class="text-sm font-weight-normal">Marketing Designer</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">47</td>
-                                <td class="text-sm font-weight-normal">2009/12/09</td>
-                                <td class="text-sm font-weight-normal">$85,675</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Howard Hatfield</td>
-                                <td class="text-sm font-weight-normal">Office Manager</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">51</td>
-                                <td class="text-sm font-weight-normal">2008/12/16</td>
-                                <td class="text-sm font-weight-normal">$164,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Hope Fuentes</td>
-                                <td class="text-sm font-weight-normal">Secretary</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">41</td>
-                                <td class="text-sm font-weight-normal">2010/02/12</td>
-                                <td class="text-sm font-weight-normal">$109,850</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Vivian Harrell</td>
-                                <td class="text-sm font-weight-normal">Financial Controller</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">62</td>
-                                <td class="text-sm font-weight-normal">2009/02/14</td>
-                                <td class="text-sm font-weight-normal">$452,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Timothy Mooney</td>
-                                <td class="text-sm font-weight-normal">Office Manager</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">37</td>
-                                <td class="text-sm font-weight-normal">2008/12/11</td>
-                                <td class="text-sm font-weight-normal">$136,200</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Jackson Bradshaw</td>
-                                <td class="text-sm font-weight-normal">Director</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">65</td>
-                                <td class="text-sm font-weight-normal">2008/09/26</td>
-                                <td class="text-sm font-weight-normal">$645,750</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Olivia Liang</td>
-                                <td class="text-sm font-weight-normal">Support Engineer</td>
-                                <td class="text-sm font-weight-normal">Singapore</td>
-                                <td class="text-sm font-weight-normal">64</td>
-                                <td class="text-sm font-weight-normal">2011/02/03</td>
-                                <td class="text-sm font-weight-normal">$234,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Bruno Nash</td>
-                                <td class="text-sm font-weight-normal">Software Engineer</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">38</td>
-                                <td class="text-sm font-weight-normal">2011/05/03</td>
-                                <td class="text-sm font-weight-normal">$163,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Sakura Yamamoto</td>
-                                <td class="text-sm font-weight-normal">Support Engineer</td>
-                                <td class="text-sm font-weight-normal">Tokyo</td>
-                                <td class="text-sm font-weight-normal">37</td>
-                                <td class="text-sm font-weight-normal">2009/08/19</td>
-                                <td class="text-sm font-weight-normal">$139,575</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Thor Walton</td>
-                                <td class="text-sm font-weight-normal">Developer</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">61</td>
-                                <td class="text-sm font-weight-normal">2013/08/11</td>
-                                <td class="text-sm font-weight-normal">$98,540</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Finn Camacho</td>
-                                <td class="text-sm font-weight-normal">Support Engineer</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">47</td>
-                                <td class="text-sm font-weight-normal">2009/07/07</td>
-                                <td class="text-sm font-weight-normal">$87,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Serge Baldwin</td>
-                                <td class="text-sm font-weight-normal">Data Coordinator</td>
-                                <td class="text-sm font-weight-normal">Singapore</td>
-                                <td class="text-sm font-weight-normal">64</td>
-                                <td class="text-sm font-weight-normal">2012/04/09</td>
-                                <td class="text-sm font-weight-normal">$138,575</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Zenaida Frank</td>
-                                <td class="text-sm font-weight-normal">Software Engineer</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">63</td>
-                                <td class="text-sm font-weight-normal">2010/01/04</td>
-                                <td class="text-sm font-weight-normal">$125,250</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Zorita Serrano</td>
-                                <td class="text-sm font-weight-normal">Software Engineer</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">56</td>
-                                <td class="text-sm font-weight-normal">2012/06/01</td>
-                                <td class="text-sm font-weight-normal">$115,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Jennifer Acosta</td>
-                                <td class="text-sm font-weight-normal">Junior Javascript Developer</td>
-                                <td class="text-sm font-weight-normal">Edinburgh</td>
-                                <td class="text-sm font-weight-normal">43</td>
-                                <td class="text-sm font-weight-normal">2013/02/01</td>
-                                <td class="text-sm font-weight-normal">$75,650</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Cara Stevens</td>
-                                <td class="text-sm font-weight-normal">Sales Assistant</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">46</td>
-                                <td class="text-sm font-weight-normal">2011/12/06</td>
-                                <td class="text-sm font-weight-normal">$145,600</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Hermione Butler</td>
-                                <td class="text-sm font-weight-normal">Regional Director</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">47</td>
-                                <td class="text-sm font-weight-normal">2011/03/21</td>
-                                <td class="text-sm font-weight-normal">$356,250</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Lael Greer</td>
-                                <td class="text-sm font-weight-normal">Systems Administrator</td>
-                                <td class="text-sm font-weight-normal">London</td>
-                                <td class="text-sm font-weight-normal">21</td>
-                                <td class="text-sm font-weight-normal">2009/02/27</td>
-                                <td class="text-sm font-weight-normal">$103,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Jonas Alexander</td>
-                                <td class="text-sm font-weight-normal">Developer</td>
-                                <td class="text-sm font-weight-normal">San Francisco</td>
-                                <td class="text-sm font-weight-normal">30</td>
-                                <td class="text-sm font-weight-normal">2010/07/14</td>
-                                <td class="text-sm font-weight-normal">$86,500</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Shad Decker</td>
-                                <td class="text-sm font-weight-normal">Regional Director</td>
-                                <td class="text-sm font-weight-normal">Edinburgh</td>
-                                <td class="text-sm font-weight-normal">51</td>
-                                <td class="text-sm font-weight-normal">2008/11/13</td>
-                                <td class="text-sm font-weight-normal">$183,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Michael Bruce</td>
-                                <td class="text-sm font-weight-normal">Javascript Developer</td>
-                                <td class="text-sm font-weight-normal">Singapore</td>
-                                <td class="text-sm font-weight-normal">29</td>
-                                <td class="text-sm font-weight-normal">2011/06/27</td>
-                                <td class="text-sm font-weight-normal">$183,000</td>
-                            </tr>
-                            <tr>
-                                <td class="text-sm font-weight-normal">Donna Snider</td>
-                                <td class="text-sm font-weight-normal">Customer Support</td>
-                                <td class="text-sm font-weight-normal">New York</td>
-                                <td class="text-sm font-weight-normal">27</td>
-                                <td class="text-sm font-weight-normal">2011/01/25</td>
-                                <td class="text-sm font-weight-normal">$112,000</td>
-                            </tr>
+                            @foreach ($data as $x)
+                                <tr>
+                                    <td class="text-sm font-weight-normal col-lg-1">
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td class="text-sm font-weight-normal">
+                                        {{ $x->full_name }}
+                                    </td>
+                                    <td class="text-sm font-weight-normal">
+                                        {{ $x->program }}
+                                    </td>
+                                    <td class="text-sm col-lg-2">
+                                        <a href="javascript:;" data-bs-toggle="tooltip"
+                                            data-bs-original-title="Preview product">
+                                            <i class="fas fa-eye text-secondary" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip"
+                                            data-bs-original-title="Edit product">
+                                            <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="javascript:;" data-bs-toggle="tooltip"
+                                            data-bs-original-title="Delete product">
+                                            <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
