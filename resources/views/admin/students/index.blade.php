@@ -89,10 +89,11 @@
                                             data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
                                         </a>
-                                        <a href="javascript:;" data-bs-toggle="tooltip"
-                                            data-bs-original-title="Delete ">
+                                        <a href="/students-destroy/{{ $x->id }}" type="button"
+                                            data-bs-toggle="tooltip" data-bs-original-title="Delete">
                                             <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
                                         </a>
+
                                     </td>
                                 </tr>
                             @endforeach
