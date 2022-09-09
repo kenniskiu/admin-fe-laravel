@@ -78,13 +78,13 @@
                         <li class="nav-item ">
                             <a class="nav-link " href="">
                                 <span class="sidenav-mini-icon"> N </span>
-                                <span class="sidenav-normal"> Notifications </span>
+                                <span class="sidenav-normal"> Lecturers </span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link "
                     aria-controls="applicationsExamples" role="button" aria-expanded="false">
                     <div
@@ -236,7 +236,7 @@
 
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
         </ul>
     </div>
