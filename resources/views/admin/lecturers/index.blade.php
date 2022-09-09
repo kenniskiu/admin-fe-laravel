@@ -94,7 +94,7 @@
                                         @endif
                                     </td>
                                     <td class="text-sm col-lg-2">
-                                        <a href="/students-show/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                        <a href="/lecturers-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
                                             data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
                                         </a>

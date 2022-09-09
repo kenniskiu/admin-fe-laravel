@@ -19,13 +19,13 @@ class LecturersSeeder extends Seeder
             [
                 'name' => "ken",
                 'is_lecturer'  => true,
-                'is_mentor'  => false,
+                'is_mentor'  => true,
                 'created_at' => Carbon::now(),
             ],
             [
                 'name' => "lukas",
-                'is_lecturer'  => false,
-                'is_mentor'  => false,
+                'is_lecturer'  => true,
+                'is_mentor'  => true,
                 'created_at' => Carbon::now(),
             ]
         ]);
