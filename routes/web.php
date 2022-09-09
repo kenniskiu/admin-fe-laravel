@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard-admin', function () {
         return view('admin.dashboard');
     });
+
+    Route::get('/students', [StudentsController::class, 'index']);
 
 });
 
