@@ -98,7 +98,7 @@
                                             data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
                                         </a>
-                                        <a href="#" class="delete-student" data-id="{{ $x->id }}"
+                                        <a href="#" class="delete-lecturer" data-id="{{ $x->id }}"
                                             type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
                                             <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
                                         </a>
@@ -116,7 +116,7 @@
     {{-- DELETE WITH SWEETALERT --}}
     <script>
         // get class
-        $('.delete-student').click(function() {
+        $('.delete-lecturer').click(function() {
             // get attr
             let id = $(this).attr('data-id');
             swal({
@@ -129,7 +129,7 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         //Memanggil routes delete"
-                        window.location = "/students-destroy/" + id + "";
+                        window.location = "/lecturers-destroy/" + id + "";
                         swal("Data Anda telah dihapus!", {
                             icon: "success",
                         });

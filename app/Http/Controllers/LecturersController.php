@@ -118,9 +118,9 @@ class LecturersController extends Controller
     {
         try {
             Lecturers::where('id', $id)->delete();
-            return redirect('/lecturer')->with('toast_success', 'Data berhasil dihapus!');
+            return redirect('/lecturers')->with('toast_success', 'Data berhasil dihapus!');
         } catch (\Throwable $th) {
-            return redirect('/lecturer')->with('toast_error',  'Data tidak berhasil dihapus!');
+            return redirect('/lecturers')->with('toast_error',  'Data tidak berhasil dihapus!');
         }
     }
 }
