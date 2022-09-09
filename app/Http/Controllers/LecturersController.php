@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Students;
+use App\Models\Lecturers;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\TryCatch;
 
-class StudentsController extends Controller
+class LecturersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class StudentsController extends Controller
     public function index()
     {
         try {
-            $students = Students::all();
-            return view('admin.students.index', [
-                'data' => $students
+            $lecturers = Lecturers::all();
+            return view('admin.lecturers.index', [
+                'data' => $lecturers
             ]);
         } catch (\Throwable $th) {
             return redirect('/dashboard-admin')->with('toast_error',  'Halaman tidak dapat di akses!');
@@ -33,9 +32,9 @@ class StudentsController extends Controller
     public function create()
     {
         try {
-            return view('admin.students.create');
+            return view('admin.lecturers.create');
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/lecturers')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -48,14 +47,26 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         try {
-            Students::create([
-                'full_name' => $request->full_name,
-                'program' => $request->program,
+            Lecturers::create([
+                'name' => $request->name,
+                'is_lecturer' => $request->is_lecturer,
+                'is_mentor' => $request->is_mentor,
             ]);
-            return redirect('/students')->with('toast_success', 'Data berhasil ditambah!');
+            return redirect('/lecturers')->with('toast_success', 'Data berhasil ditambah!');
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Data tidak berhasil ditambah!');
+            return redirect('/lecturers')->with('toast_error',  'Data tidak berhasil ditambah!');
         }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -67,12 +78,12 @@ class StudentsController extends Controller
     public function edit($id)
     {
         try {
-            $data = Students::find($id);
-            return view('admin.students.edit', [
+            $data = Lecturers::find($id);
+            return view('admin.lecturers.edit', [
                 'data' => $data
             ]);
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/lecturers')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -86,13 +97,14 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            Students::where("id", $id)->update([
-                'full_name' => $request->full_name,
-                'program' => $request->program,
+            Lecturers::where("id", $id)->update([
+                'name' => $request->name,
+                'is_lecturer' => $request->is_lecturer,
+                'is_mentor' => $request->is_mentor,
             ]);
-            return redirect('/students')->with('toast_success', 'Data berhasil diubah!');
+            return redirect('/lecturers')->with('toast_success', 'Data berhasil diubah!');
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Data tidak berhasil diubah!');
+            return redirect('/lecturers')->with('toast_error',  'Data tidak berhasil diubah!');
         }
     }
 
@@ -105,10 +117,10 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         try {
-            Students::where('id', $id)->delete();
-            return redirect('/students')->with('toast_success', 'Data berhasil dihapus!');
+            Lecturers::where('id', $id)->delete();
+            return redirect('/lecturers')->with('toast_success', 'Data berhasil dihapus!');
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Data tidak berhasil dihapus!');
+            return redirect('/lecturers')->with('toast_error',  'Data tidak berhasil dihapus!');
         }
     }
 }

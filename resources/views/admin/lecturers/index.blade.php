@@ -28,9 +28,9 @@
             </li>
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Students</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Lecturers</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Students</h6>
+        <h6 class="font-weight-bolder mb-0">Lecturers</h6>
     </nav>
 
     <div class="row mt-4">
@@ -40,15 +40,15 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">All Students</h5>
+                            <h5 class="mb-0">All Lecturers</h5>
                             {{-- <p class="text-sm mb-0">
                                 A lightweight, extendable, dependency-free javascript HTML table plugin.
                             </p> --}}
                         </div>
                         <div class="ms-auto my-auto mt-lg-0 mt-4">
                             <div class="ms-auto my-auto">
-                                <a href="/students-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
-                                    New Students
+                                <a href="/lecturers-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
+                                    New Lecturers
                                 </a>
                             </div>
                         </div>
@@ -60,9 +60,11 @@
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Full Name
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Program
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Is Lecturer
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Is Mentor
                                 </th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action
                                 </th>
@@ -75,17 +77,28 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        {{ $x->full_name }}
+                                        {{ $x->name }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        {{ $x->program }}
+                                        @if ($x->is_lecturer == true)
+                                            <span class="badge badge-success badge-sm">Yes</span>
+                                        @else
+                                            <span class="badge badge-danger badge-sm">No</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-sm font-weight-normal">
+                                        @if ($x->is_mentor == true)
+                                            <span class="badge badge-success badge-sm">Yes</span>
+                                        @else
+                                            <span class="badge badge-danger badge-sm">No</span>
+                                        @endif
                                     </td>
                                     <td class="text-sm col-lg-2">
-                                        <a href="/students-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                        <a href="/lecturers-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
                                             data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
                                         </a>
-                                        <a href="#" class="delete-student" data-id="{{ $x->id }}"
+                                        <a href="#" class="delete-lecturer" data-id="{{ $x->id }}"
                                             type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
                                             <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
                                         </a>
@@ -103,7 +116,7 @@
     {{-- DELETE WITH SWEETALERT --}}
     <script>
         // get class
-        $('.delete-student').click(function() {
+        $('.delete-lecturer').click(function() {
             // get attr
             let id = $(this).attr('data-id');
             swal({
@@ -116,7 +129,7 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         //Memanggil routes delete"
-                        window.location = "/students-destroy/" + id + "";
+                        window.location = "/lecturers-destroy/" + id + "";
                         swal("Data Anda telah dihapus!", {
                             icon: "success",
                         });
