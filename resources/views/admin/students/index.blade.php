@@ -81,16 +81,16 @@
                                         {{ $x->program }}
                                     </td>
                                     <td class="text-sm col-lg-2">
-                                        <a href="javascript:;" data-bs-toggle="tooltip"
-                                            data-bs-original-title="Preview product">
+                                        {{-- <a href="javascript:;" data-bs-toggle="tooltip"
+                                            data-bs-original-title="Preview">
                                             <i class="fas fa-eye text-secondary" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip"
-                                            data-bs-original-title="Edit product">
+                                        </a> --}}
+                                        <a href="/students-show/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                            data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
                                         </a>
                                         <a href="javascript:;" data-bs-toggle="tooltip"
-                                            data-bs-original-title="Delete product">
+                                            data-bs-original-title="Delete ">
                                             <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
                                         </a>
                                     </td>

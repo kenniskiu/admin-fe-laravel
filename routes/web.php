@@ -30,6 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/students', [StudentsController::class, 'index']);
     Route::get('/students-create', [StudentsController::class, 'create']);
     Route::post('/students-store', [StudentsController::class, 'store']);
+    Route::get('/students-show/{id}', [StudentsController::class, 'edit']);
+    Route::post('/students-update/{id}', [StudentsController::class, 'update']);
+    Route::get('/students-destroy/{id}', [StudentsController::class, 'destroy']);
 });
 
 // Tidak perlu login pun bisa di akses :)

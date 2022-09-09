@@ -21,9 +21,7 @@ class StudentsController extends Controller
                 'data' => $students
             ]);
         } catch (\Throwable $th) {
-            return redirect()
-                ->back()
-                ->with('toast_error',  "Halaman tidak dapat di akses!");
+            return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -37,9 +35,7 @@ class StudentsController extends Controller
         try {
             return view('admin.students.create');
         } catch (\Throwable $th) {
-            return redirect()
-                ->back()
-                ->with('toast_error',  "Halaman tidak dapat di akses!");
+            return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -58,19 +54,8 @@ class StudentsController extends Controller
             ]);
             return redirect('/students')->with('toast_success', 'Data berhasil ditambah!');
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Data tidak berhasil ditambah! ');
+            return redirect('/students')->with('toast_error',  'Data tidak berhasil ditambah!');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -81,7 +66,14 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $data = Students::find($id);
+            return view('admin.students.edit', [
+                'data' => $data
+            ]);
+        } catch (\Throwable $th) {
+            return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
+        }
     }
 
     /**
@@ -93,7 +85,15 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            Students::where("id", $id)->update([
+                'full_name' => $request->full_name,
+                'program' => $request->program,
+            ]);
+            return redirect('/students')->with('toast_success', 'Data berhasil diubah!');
+        } catch (\Throwable $th) {
+            return redirect('/students')->with('toast_error',  'Data tidak berhasil diubah!');
+        }
     }
 
     /**
@@ -104,6 +104,11 @@ class StudentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Students::where('id', $id)->delete();
+            return redirect('/students')->with('toast_success', 'Data berhasil dihapus!');
+        } catch (\Throwable $th) {
+            return redirect('/students')->with('toast_error',  'Data tidak berhasil dihapus!');
+        }
     }
 }
