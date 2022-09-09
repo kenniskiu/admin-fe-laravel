@@ -81,20 +81,14 @@
                                         {{ $x->program }}
                                     </td>
                                     <td class="text-sm col-lg-2">
-                                        {{-- <a href="javascript:;" data-bs-toggle="tooltip"
-                                            data-bs-original-title="Preview">
-                                            <i class="fas fa-eye text-secondary" aria-hidden="true"></i>
-                                        </a> --}}
                                         <a href="/students-show/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
                                             data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
                                         </a>
-                                        <a href="/students-destroy/{{ $x->id }}" type="button"
-                                            data-bs-toggle="tooltip" data-bs-original-title="Delete">
+                                        <a href="#" class="delete-student" data-id="{{ $x->id }}"
+                                            type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
                                             <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
                                         </a>
-
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -103,4 +97,31 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('sweetalert')
+    {{-- DELETE WITH SWEETALERT --}}
+    <script>
+        // get class
+        $('.delete-student').click(function() {
+            // get attr
+            let id = $(this).attr('data-id');
+            swal({
+                    title: "Hapus Data",
+                    text: "Anda yakin ingin menghapus?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        //Memanggil routes delete"
+                        window.location = "/students-destroy/" + id + "";
+                        swal("Data Anda telah dihapus!", {
+                            icon: "success",
+                        });
+                    }
+                });
+        });
+    </script>
 @endsection

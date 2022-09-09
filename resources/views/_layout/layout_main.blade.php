@@ -125,6 +125,8 @@
     @include('_partial._assetJs')
     {{-- ============== ASSET JS============== --}}
 
+    @yield('sweetalert')
+
 </body>
 
 </html>
