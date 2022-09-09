@@ -70,9 +70,9 @@
                 <div class="collapse " id="pagesExamples">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item ">
-                            <a class="nav-link " href="">
+                            <a class="nav-link " href="/students">
                                 <span class="sidenav-mini-icon"> S </span>
-                                <span class="sidenav-normal"> Sweet Alerts </span>
+                                <span class="sidenav-normal">Student</span>
                             </a>
                         </li>
                         <li class="nav-item ">
@@ -225,8 +225,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link "
-                                            href="">
+                                        <a class="nav-link " href="">
                                             <span class="sidenav-mini-icon text-xs"> I </span>
                                             <span class="sidenav-normal"> Illustration </span>
                                         </a>
