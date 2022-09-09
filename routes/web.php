@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LecturersController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/students-show/{id}', [StudentsController::class, 'edit']);
     Route::post('/students-update/{id}', [StudentsController::class, 'update']);
     Route::get('/students-destroy/{id}', [StudentsController::class, 'destroy']);
+
+    Route::get('/lecturers', [LecturersController::class, 'index']);
 });
 
 // Tidak perlu login pun bisa di akses :)

@@ -76,7 +76,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link " href="">
+                            <a class="nav-link " href="/lecturers">
                                 <span class="sidenav-mini-icon"> N </span>
                                 <span class="sidenav-normal"> Lecturers </span>
                             </a>

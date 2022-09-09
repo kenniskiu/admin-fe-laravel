@@ -21,7 +21,7 @@ class StudentsController extends Controller
                 'data' => $students
             ]);
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/dashboard-admin')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
