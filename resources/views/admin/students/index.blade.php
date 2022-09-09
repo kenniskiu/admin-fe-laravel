@@ -47,7 +47,7 @@
                         </div>
                         <div class="ms-auto my-auto mt-lg-0 mt-4">
                             <div class="ms-auto my-auto">
-                                <a href="" class="btn bg-gradient-primary btn-sm mb-0" target="_blank">+&nbsp;
+                                <a href="/students-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
                                     New Students
                                 </a>
                             </div>

@@ -28,7 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/students', [StudentsController::class, 'index']);
-
+    Route::get('/students-create', [StudentsController::class, 'create']);
+    Route::post('/students-store', [StudentsController::class, 'store']);
 });
 
 // Tidak perlu login pun bisa di akses :)

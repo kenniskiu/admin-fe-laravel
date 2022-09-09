@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Students;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 
 class StudentsController extends Controller
 {
@@ -16,11 +17,13 @@ class StudentsController extends Controller
     {
         try {
             $students = Students::all();
-            return view('admin.students.students', [
+            return view('admin.students.index', [
                 'data' => $students
             ]);
         } catch (\Throwable $th) {
-            return redirect('/')->with('toast_error',  'Halaman tidak dapat di akses! ');
+            return redirect()
+                ->back()
+                ->with('toast_error',  "Halaman tidak dapat di akses!");
         }
     }
 
@@ -31,7 +34,13 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            return view('admin.students.create');
+        } catch (\Throwable $th) {
+            return redirect()
+                ->back()
+                ->with('toast_error',  "Halaman tidak dapat di akses!");
+        }
     }
 
     /**
@@ -42,7 +51,15 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            Students::create([
+                'full_name' => $request->full_name,
+                'program' => $request->program,
+            ]);
+            return redirect('/students')->with('toast_success', 'Data berhasil ditambah!');
+        } catch (\Throwable $th) {
+            return redirect('/students')->with('toast_error',  'Data tidak berhasil ditambah! ');
+        }
     }
 
     /**
