@@ -47,7 +47,7 @@
                         </div>
                         <div class="ms-auto my-auto mt-lg-0 mt-4">
                             <div class="ms-auto my-auto">
-                                <a href="/" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
+                                <a href="/lecturers-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
                                     New Lecturers
                                 </a>
                             </div>
@@ -81,16 +81,16 @@
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         @if ($x->is_lecturer == true)
-                                            <span class="badge badge-success badge-sm">True</span>
+                                            <span class="badge badge-success badge-sm">Yes</span>
                                         @else
-                                            <span class="badge badge-danger badge-sm">False</span>
+                                            <span class="badge badge-danger badge-sm">No</span>
                                         @endif
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         @if ($x->is_mentor == true)
-                                            <span class="badge badge-success badge-sm">True</span>
+                                            <span class="badge badge-success badge-sm">Yes</span>
                                         @else
-                                            <span class="badge badge-danger badge-sm">False</span>
+                                            <span class="badge badge-danger badge-sm">No</span>
                                         @endif
                                     </td>
                                     <td class="text-sm col-lg-2">
