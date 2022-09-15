@@ -65,7 +65,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Pages</span>
+                    <span class="nav-link-text ms-1">User</span>
                 </a>
                 <div class="collapse " id="pagesExamples">
                     <ul class="nav ms-4 ps-3">
@@ -79,6 +79,12 @@
                             <a class="nav-link " href="/lecturers">
                                 <span class="sidenav-mini-icon"> N </span>
                                 <span class="sidenav-normal"> Lecturers </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/verifyUser">
+                                <span class="sidenav-mini-icon"> N </span>
+                                <span class="sidenav-normal"> Verify </span>
                             </a>
                         </li>
                     </ul>

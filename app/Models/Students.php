@@ -12,7 +12,7 @@ class Students extends Model
     protected $table = 'students';
     protected $primaryKey = "id";
     protected $fillable = [
-        'full_name',
-        'program',
+        'study_program',
+        'semester',
     ];
 }

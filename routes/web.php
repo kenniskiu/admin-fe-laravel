@@ -3,6 +3,7 @@
 use App\Http\Controllers\LecturersController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\VerifyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/lecturers-edit/{id}', [LecturersController::class, 'edit']);
     Route::post('/lecturers-update/{id}', [LecturersController::class, 'update']);
     Route::get('/lecturers-destroy/{id}', [LecturersController::class, 'destroy']);
+
+    // administration
+    Route::get('/verifyUser', [VerifyController::class, 'index']);
+    Route::get('/verifyUser-files/{id}', [VerifyController::class, 'files']);
 });
 
 // Tidak perlu login pun bisa di akses :)

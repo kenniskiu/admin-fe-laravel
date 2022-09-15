@@ -16,10 +16,12 @@ class StudentsController extends Controller
     public function index()
     {
         try {
-            $students = Students::all();
+            $data = Students::join('users','users.id','=','students.user_id')
+                        ->get(['users.*']);
             return view('admin.students.index', [
-                'data' => $students
+                'data' => $data
             ]);
+            // dd($data);
         } catch (\Throwable $th) {
             return redirect('/dashboard-admin')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
