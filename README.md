@@ -36,11 +36,12 @@ Generate key
 ```bash
 php artisan key:generate
 ```
-
+<!--
 Migrate database
 ```bash
 php artisan migrate
 ```
+-->
 
 Seeder table 
 ```bash
