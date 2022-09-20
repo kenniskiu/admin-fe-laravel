@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Subject;
+use App\Models\Lecturers;
 
 
 class SubjectController extends Controller
@@ -34,7 +35,10 @@ class SubjectController extends Controller
     public function create()
     {
         try {
-            return view('admin.subject.create');
+            $data = Lecturers::all();
+            return view('admin.subject.create',[
+                'data'=> $data
+            ]);
         } catch (\Throwable $th) {
             return redirect('/subjects')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
