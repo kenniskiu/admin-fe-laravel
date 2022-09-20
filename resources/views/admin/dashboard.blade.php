@@ -26,7 +26,7 @@
                         <div class="card-header p-3 pb-0">
                             <p class="text-sm mb-0 text-capitalize font-weight-bold">New Registered Users</p>
                             <h5 class="font-weight-bolder mb-0">
-                                {{$NRUdata->count()}}
+                                {{$NRUdata->where('created_at', '>', $now)->count()}}
                                 <span class="text-success text-sm font-weight-bolder"></span>
                             </h5>
                         </div>
@@ -93,13 +93,9 @@
                             <div class="d-flex">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">{{$x->user->full_name}}</h6>
-                                        <span class="text-xs">27 March 2020, at 12:30 PM</span>
+                                        <h6 class="mb-1 text-dark text-sm">{{$x->user->full_name}} ({{$x->user->id}})</h6>
+                                        <span class="text-xs">{{$x->user->created_at}}</span>
                                     </div>
-                                </div>
-                                <div
-                                    class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold ms-auto">
-                                    - $ 2,500
                                 </div>
                             </div>
                             <hr class="horizontal dark mt-3 mb-2" />
@@ -124,24 +120,19 @@
                 </div>
                 <div class="card-body p-3">
                     <ul class="list-group">
+                        @foreach ($NRUdata as $x)
                         <li class="list-group-item border-0 justify-content-between ps-0 pb-0 border-radius-lg">
                             <div class="d-flex">
                                 <div class="d-flex align-items-center">
-                                    <button
-                                        class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i
-                                            class="fas fa-arrow-up"></i></button>
                                     <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">via PayPal</h6>
-                                        <span class="text-xs">07 June 2021, at 09:00 AM</span>
+                                        <h6 class="mb-1 text-dark text-sm">{{$x->user}}</h6>
+                                        <span class="text-xs">{{$x->user}}</span>
                                     </div>
-                                </div>
-                                <div
-                                    class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold ms-auto">
-                                    + $ 4,999
                                 </div>
                             </div>
                             <hr class="horizontal dark mt-3 mb-2" />
                         </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

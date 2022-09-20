@@ -21,4 +21,7 @@ class User extends Model
     public function DAU(){
         return $this->hasOne(DAU::class,'user_id','id');
     }
+    public function NRU(){
+        return $this->hasOne(NRU::class,'id');
+    }
 }
