@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uuids;
 
-class Students extends Model
+class Major extends Model
 {
-    use HasFactory;
+    use HasFactory, Uuids;
 
-    protected $table = 'students';
+    protected $table = 'majors';
     protected $primaryKey = "id";
     protected $fillable = [
-        'study_program',
-        'semester',
+        'name',
     ];
 }

@@ -1,6 +1,5 @@
 @extends('_layout.layout_main')
 
-
 @section('content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -26,11 +25,11 @@
                     </svg>
                 </a>
             </li>
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">User</a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Students</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Verify User</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Students</h6>
+        <h6 class="font-weight-bolder mb-0">Verify</h6>
     </nav>
 
     <div class="row mt-4">
@@ -40,17 +39,10 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">All Students</h5>
+                            <h5 class="mb-0">Pending Users</h5>
                             {{-- <p class="text-sm mb-0">
                                 A lightweight, extendable, dependency-free javascript HTML table plugin.
                             </p> --}}
-                        </div>
-                        <div class="ms-auto my-auto mt-lg-0 mt-4">
-                            <div class="ms-auto my-auto">
-                                <a href="/students-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
-                                    New Students
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,35 +54,32 @@
                                 </th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Full Name
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Program
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Study Program
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Inspect
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $x)
-                                <tr>
-                                    <td class="text-sm font-weight-normal col-lg-1">
-                                        {{ $loop->iteration }}
-                                    </td>
-                                    <td class="text-sm font-weight-normal">
-                                        {{ $x->id }}
-                                    </td>
-                                    <td class="text-sm font-weight-normal">
-                                        {{ $x->full_name }}
-                                    </td>
-                                    <td class="text-sm col-lg-2">
-                                        <a href="/students-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
-                                            data-bs-original-title="Edit">
-                                            <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="delete-student" data-id="{{ $x->id }}"
-                                            type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
-                                            <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
-                                        </a>
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td class="text-sm font-weight-normal col-lg-1">
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td class="text-sm font-weight-normal">
+                                    {{ $x->full_name }}
+                                </td>
+                                <td class="text-sm font-weight-normal">
+                                    {{ $x->study_program }}
+                                </td>
+                                <td class="text-sm col-lg-2">
+                                    <a href="/verifyUser-files/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                        data-bs-original-title="Inspect Files">
+                                        <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -107,11 +96,9 @@
             // get attr
             let id = $(this).attr('data-id');
             swal({
-                    title: "Hapus Data",
+                    title: "Document",
                     text: "Anda yakin ingin menghapus?",
-                    icon: "warning",
                     buttons: true,
-                    dangerMode: true,
                 })
                 .then((willDelete) => {
                     if (willDelete) {
@@ -124,4 +111,49 @@
                 });
         });
     </script>
+    {{-- <script>
+        $(document).on('click','.editIcon', function(e){
+            e.preventDefault();
+            let id = $(this).attr('id');
+            console.log(id)
+            $.ajax({
+                url:'showFiles/'+id,
+                method:'GET',
+                data: {
+                    id : id
+                },
+                success: function(res){
+                    ${"#res"}.val(res);
+                    ${"#nin"}.val(res.nin);
+                    ${"#study_program"}.val(res.study_program);
+                    ${"#semester"}.val(res.semester);
+                    ${"#residence_address"}.val(res.residence_address);
+                    ${"#nin_address"}.val(res.nin_address);
+                    ${"#phone"}.val(res.birth_place);
+                    ${"#birth_place"}.val(res.birth_place);
+                    ${"#domicile"}.val(res.domicile);
+                    ${"#financier"}.val(res.financier);
+                    ${"father_name"}.val(res.father_name);
+                    ${"#father_income"}.val(res.father_income);
+                    ${"#mother_income"}.val(res.mother_income);
+                    ${"#integrity_pact"}.html(`<img src="storage/images/${res.integrity_pact}" width="100"
+                    class="img-fluid" img-thumbnail">`);
+                    ${"#nin_card"}.html(`<img src="storage/images/${res.nin_card}" width="100"
+                    class="img-fluid" img-thumbnail">`);
+                    ${"#family_card"}.html(`<img src="storage/images/${res.family_card}" width="100"
+                    class="img-fluid" img-thumbnail">`);
+                    ${"#certificate"}.html(`<img src="storage/images/${res.certificate}" width="100"
+                    class="img-fluid" img-thumbnail">`);
+                    ${"#photo"}.html(`<img src="storage/images/${res.photo}" width="100"
+                    class="img-fluid" img-thumbnail">`);
+                    ${"#transcript"}.html(`<img src="storage/images/${res.transcript}" width="100"
+                    class="img-fluid" img-thumbnail">`);
+                    ${"#recomendation_letter"}.html(`<img src="storage/images/${res.recommendation_letter}" width="100"
+                    class="img-fluid" img-thumbnail">`);
+                }
+            })
+        })
+    </script> --}}
 @endsection
+
+

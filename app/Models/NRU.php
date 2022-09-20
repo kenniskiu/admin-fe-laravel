@@ -4,15 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uuids;
 
-class Students extends Model
+class NRU extends Model
 {
-    use HasFactory;
+    use HasFactory,Uuids;
 
-    protected $table = 'students';
+    protected $table = 'new_registered_users';
     protected $primaryKey = "id";
-    protected $fillable = [
-        'study_program',
-        'semester',
-    ];
 }

@@ -1,6 +1,5 @@
 @extends('_layout.layout_main')
 
-
 @section('content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -26,11 +25,11 @@
                     </svg>
                 </a>
             </li>
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Curriculum</a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Students</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Subjects</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Students</h6>
+        <h6 class="font-weight-bolder mb-0">Subjects</h6>
     </nav>
 
     <div class="row mt-4">
@@ -40,15 +39,15 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">All Students</h5>
+                            <h5 class="mb-0">Subjects</h5>
                             {{-- <p class="text-sm mb-0">
                                 A lightweight, extendable, dependency-free javascript HTML table plugin.
                             </p> --}}
                         </div>
                         <div class="ms-auto my-auto mt-lg-0 mt-4">
                             <div class="ms-auto my-auto">
-                                <a href="/students-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
-                                    New Students
+                                <a href="/subjects-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
+                                    New Subjects
                                 </a>
                             </div>
                         </div>
@@ -60,9 +59,15 @@
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Full Name
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Program
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Credits
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Level
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lecturer
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Degree
                                 </th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action
                                 </th>
@@ -70,27 +75,37 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $x)
-                                <tr>
-                                    <td class="text-sm font-weight-normal col-lg-1">
-                                        {{ $loop->iteration }}
-                                    </td>
-                                    <td class="text-sm font-weight-normal">
-                                        {{ $x->id }}
-                                    </td>
-                                    <td class="text-sm font-weight-normal">
-                                        {{ $x->full_name }}
-                                    </td>
-                                    <td class="text-sm col-lg-2">
-                                        <a href="/students-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
-                                            data-bs-original-title="Edit">
-                                            <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="delete-student" data-id="{{ $x->id }}"
-                                            type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
-                                            <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
-                                        </a>
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td class="text-sm font-weight-normal col-lg-1">
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td class="text-sm font-weight-normal">
+                                    {{ $x->name }}
+                                </td>
+                                <td class="text-sm font-weight-normal">
+                                    {{ $x->credit }}
+                                </td>
+                                <td class="text-sm font-weight-normal">
+                                    {{ $x->level }}
+                                </td>
+                                <td class="text-sm font-weight-normal">
+                                    {{ $x->lecturer}}
+                                </td>
+                                <td class="text-sm font-weight-normal">
+                                    {{ $x->degree}}
+                                </td>
+                                <td class="text-sm col-lg-2">
+                                    <a href="/subjects-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                        data-bs-original-title="Edit">
+                                        <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="#" class="delete-subject" data-id="{{ $x->id }}"
+                                        type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
+                                        <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -103,20 +118,18 @@
     {{-- DELETE WITH SWEETALERT --}}
     <script>
         // get class
-        $('.delete-student').click(function() {
+        $('.delete-subject').click(function() {
             // get attr
             let id = $(this).attr('data-id');
             swal({
-                    title: "Hapus Data",
+                    title: "Document",
                     text: "Anda yakin ingin menghapus?",
-                    icon: "warning",
                     buttons: true,
-                    dangerMode: true,
                 })
                 .then((willDelete) => {
                     if (willDelete) {
                         //Memanggil routes delete"
-                        window.location = "/students-destroy/" + id + "";
+                        window.location = "/subjects-destroy/" + id + "";
                         swal("Data Anda telah dihapus!", {
                             icon: "success",
                         });
@@ -125,3 +138,5 @@
         });
     </script>
 @endsection
+
+

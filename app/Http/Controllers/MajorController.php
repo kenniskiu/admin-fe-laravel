@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Students;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\TryCatch;
+use App\Models\Major;
 
-class StudentsController extends Controller
+class MajorController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -16,15 +15,13 @@ class StudentsController extends Controller
     public function index()
     {
         try {
-            $data = Students::join('users','users.id','=','students.user_id')
-                        ->get(['users.*']);
-            return view('admin.students.index', [
+            $data = Major::all();
+            return view('admin.major.index', [
                 'data' => $data
             ]);
             // dd($data);
         } catch (\Throwable $th) {
             dd($th);
-            return redirect('/dashboard-admin')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -36,9 +33,9 @@ class StudentsController extends Controller
     public function create()
     {
         try {
-            return view('admin.students.create');
+            return view('admin.major.create');
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/majors')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -51,13 +48,13 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         try {
-            Students::create([
-                'full_name' => $request->full_name,
-                'program' => $request->program,
+            Major::create([
+                'name' => $request->name,
             ]);
-            return redirect('/students')->with('toast_success', 'Data berhasil ditambah!');
+            return redirect('/majors')->with('toast_success', 'Data berhasil ditambah!');
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Data tidak berhasil ditambah!');
+            dd($th);
+            // return redirect('/Majors')->with('toast_error',  'Data tidak berhasil ditambah!');
         }
     }
 
@@ -70,12 +67,12 @@ class StudentsController extends Controller
     public function edit($id)
     {
         try {
-            $data = Students::find($id);
-            return view('admin.students.edit', [
+            $data = Major::find($id);
+            return view('admin.major.edit', [
                 'data' => $data
             ]);
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/majors')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -89,13 +86,12 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            Students::where("id", $id)->update([
-                'full_name' => $request->full_name,
-                'program' => $request->program,
+            Major::where("id", $id)->update([
+                'name' => $request->name,
             ]);
-            return redirect('/students')->with('toast_success', 'Data berhasil diubah!');
+            return redirect('/majors')->with('toast_success', 'Data berhasil diubah!');
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Data tidak berhasil diubah!');
+            return redirect('/majors')->with('toast_error',  'Data tidak berhasil diubah!');
         }
     }
 
@@ -108,10 +104,10 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         try {
-            Students::where('id', $id)->delete();
-            return redirect('/students')->with('toast_success', 'Data berhasil dihapus!');
+            Major::where('id', $id)->delete();
+            return redirect('/majors')->with('toast_success', 'Data berhasil dihapus!');
         } catch (\Throwable $th) {
-            return redirect('/students')->with('toast_error',  'Data tidak berhasil dihapus!');
+            dd($th);
         }
     }
 }
