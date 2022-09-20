@@ -77,7 +77,7 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        {{ $x->name }}
+                                        {{$x->user->full_name}}
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         @if ($x->is_lecturer == true)
