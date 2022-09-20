@@ -4,20 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 use App\Traits\Uuids;
 
-class Administration extends Model
+class Major extends Model
 {
     use HasFactory, Uuids;
 
-    protected $table = 'Administrations';
+    protected $table = 'majors';
     protected $primaryKey = "id";
     protected $fillable = [
-        'is_approved',
+        'name',
     ];
-    public function userData()
-    {
-        return $this->belongsTo( User::class,'user_id');
-    }
 }

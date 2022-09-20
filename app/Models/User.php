@@ -18,4 +18,7 @@ class User extends Model
     {
         return $this->hasOne( Administration::class,'user_id');
     }
+    public function DAU(){
+        return $this->hasOne(DAU::class,'user_id','id');
+    }
 }

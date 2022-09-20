@@ -41,7 +41,7 @@
                     Credentials
                 </div>
                 <div class="card-body">
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data" action="/verifyUser-verify">
                         @csrf
                         <div class="container">
                             <div class="row">
@@ -70,7 +70,6 @@
                                         <div class="h6">Residence Address</div>
                                         <div class="small">{{$data->residence_address}}</div>
                                     </div>
-
                                 </div>
                                 <div class="col-4">
                                     <div class="mb-3">
@@ -120,14 +119,126 @@
                             <div class="fw-bolder h4 text-decoration-underline mb-4">
                                 Documents
                             </div>
-                            <div class="col">
-                                <div class="h6">Integrity Pact</div>
-                                <img src="{{ asset('assets/img/documents/'.$data->integrity_pact) }}"
-                                class="img-fluid imeg w-50">
+                            <div class="row">
+                                <div class="col-10">
+                                    <div class="h6">Integrity Pact</div>
+                                    <img src="{{ asset('assets/img/documents/'.$data->integrity_pact) }}"
+                                    class="img-fluid imeg">
+                                    <div class="small p-0 m-0">
+                                        <a class="text-decoration-underline text-link"
+                                            target="_blank"
+                                            href="/download/{{$data->integrity_pact}}">
+                                            {{$data->integrity_pact}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <input type="checkbox" name="valid[]" value="integrity_pact">
+                                </div>
                             </div>
-                            <div class="small p-0 m-0">
-                                {{$data->integrity_pact}}
+                            <div class="row mt-5">
+                                <div class="col-10">
+                                    <div class="h6">NIN Card</div>
+                                    <img src="{{ asset('assets/img/documents/'.$data->nin_card) }}"
+                                    class="img-fluid imeg">
+                                    <div class="small p-0 m-0">
+                                        <a class="text-decoration-underline text-link"
+                                        target="_blank"
+                                            href="/download/{{$data->nin_card}}">
+                                            {{$data->nin_card}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <input type="checkbox" name="valid[]" value="nin_card">
+                                </div>
                             </div>
+                            <div class="row mt-5">
+                                <div class="col-10">
+                                    <div class="h6">Family Card</div>
+                                    <img src="{{ asset('assets/img/documents/'.$data->family_card) }}"
+                                    class="img-fluid imeg">
+                                    <div class="small p-0 m-0">
+                                        <a class="text-decoration-underline text-link"
+                                            target="_blank"
+                                            href="/download/{{$data->family_card}}">
+                                            {{$data->family_card}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <input type="checkbox" name="valid[]" value="family_card">
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-10">
+                                    <div class="h6">Certificate</div>
+                                    <img src="{{ asset('assets/img/documents/'.$data->certificate) }}"
+                                    class="img-fluid imeg">
+                                    <div class="small p-0 m-0">
+                                        <a class="text-decoration-underline text-link"
+                                            target="_blank"
+                                            href="/download/{{$data->certificate}}">
+                                            {{$data->certificate}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <input type="checkbox" name="valid[]" value="certificate">
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-10">
+                                    <div class="h6">Photo</div>
+                                    <img src="{{ asset('assets/img/documents/'.$data->photo) }}"
+                                    class="img-fluid imeg">
+                                    <div class="small p-0 m-0">
+                                        <a class="text-decoration-underline text-link"
+                                            target="_blank"
+                                            href="/download/{{$data->photo}}">
+                                            {{$data->photo}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <input type="checkbox" name="valid[]" value="photo">
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-10">
+                                    <div class="h6">Transcript</div>
+                                    <img src="{{ asset('assets/img/documents/'.$data->transcript) }}"
+                                    class="img-fluid imeg">
+                                    <div class="small p-0 m-0">
+                                        <a class="text-decoration-underline text-link"
+                                            target="_blank"
+                                            href="/download/{{$data->transcript}}">
+                                            {{$data->transcript}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <input type="checkbox" name="valid[]" value="transcript">
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-10">
+                                    <div class="h6">Recommendation Letter</div>
+                                    <img src="{{ asset('assets/img/documents/'.$data->recommendation_letter) }}"
+                                    class="img-fluid imeg">
+                                    <div class="small p-0 m-0">
+                                        <a class="text-decoration-underline text-link"
+                                            target="_blank"
+                                            href="/download/{{$data->recommendation_letter}}">
+                                            {{$data->recommendation_letter}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <input type="checkbox" name="valid[]" value="reccomendation_letter">
+                                </div>
+                            </div>
+
                         </div>
                         <button type="submit" class="btn bg-gradient-success btn-sm p-2 mt-4">
                             <i class="fas fa-check"></i>
