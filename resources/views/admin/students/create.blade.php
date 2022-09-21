@@ -66,6 +66,17 @@
                             </select>
                         </div>
 
+                        {{-- <div class="form-group">
+                            <label>Example of multiple select</label>
+                            <select multiple data-placeholder="Choose anything" data-allow-clear="1" class="select2">
+                                <option>Tommy Yount</option>
+                                <option>Hye Panter</option>
+                                <option>Vi Yohe</option>
+                                <option>Keva Bandy</option>
+                                <option>Hannelore Corning</option>
+                            </select>
+                        </div> --}}
+
                         <a href="/students" type="button" class="btn btn-outline-primary btn-sm mb-0">
                             Back
                         </a>

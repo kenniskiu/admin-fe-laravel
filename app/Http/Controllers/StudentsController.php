@@ -80,9 +80,14 @@ class StudentsController extends Controller
     public function edit($id)
     {
         try {
+            $major = Major::all();
+            $user = User::all();
+
             $data = Students::find($id);
             return view('admin.students.edit', [
-                'data' => $data
+                'data' => $data,
+                'major' => $major,
+                'user' => $user
             ]);
         } catch (\Throwable $th) {
             return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
@@ -99,9 +104,13 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         try {
+
+
+            // $major = '{' . $request->major_id . '}';
+
             Students::where("id", $id)->update([
-                'full_name' => $request->full_name,
-                'program' => $request->program,
+                'user_id' => $request->user_id,
+                'major_id' => $request->major_id,
             ]);
             return redirect('/students')->with('toast_success', 'Data berhasil diubah!');
         } catch (\Throwable $th) {
