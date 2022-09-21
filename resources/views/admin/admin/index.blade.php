@@ -49,7 +49,6 @@
                             <div class="ms-auto my-auto">
                                 <a href="/admin-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
                                     New Admin
-                                    {{-- {{ Auth::user()->id }} --}}
                                 </a>
                             </div>
                         </div>
@@ -77,12 +76,12 @@
                                         {{ $x->email }}
                                     </td>
                                     <td class="text-sm col-lg-2">
-                                        <a href="/admin-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                        {{-- <a href="/admin-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
                                             data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="delete-student" data-id="{{ $x->id }}"
-                                            type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
+                                        </a> --}}
+                                        <a href="#" class="delete-admin" data-id="{{ $x->id }}" type="button"
+                                            data-bs-toggle="tooltip" data-bs-original-title="Delete">
                                             <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
                                         </a>
                                 </tr>
@@ -99,7 +98,7 @@
     {{-- DELETE WITH SWEETALERT --}}
     <script>
         // get class
-        $('.delete-student').click(function() {
+        $('.delete-admin').click(function() {
             // get attr
             let id = $(this).attr('data-id');
             swal({
@@ -112,7 +111,7 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         //Memanggil routes delete"
-                        window.location = "/students-destroy/" + id + "";
+                        window.location = "/admin-destroy/" + id + "";
                         swal("Data Anda telah dihapus!", {
                             icon: "success",
                         });

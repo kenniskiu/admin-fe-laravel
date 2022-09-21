@@ -52,7 +52,7 @@ class AdminController extends Controller
             Admin::create([
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
-                'created_by' => Auth::user()->id, 
+                'created_by' => Auth::user()->id,
             ]);
             return redirect('/admin')->with('toast_success', 'Data berhasil ditambah!');
         } catch (\Throwable $th) {
@@ -80,7 +80,6 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -103,6 +102,11 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Admin::where('id', $id)->delete();
+            return redirect('/admin')->with('toast_success', 'Data berhasil dihapus!');
+        } catch (\Throwable $th) {
+            return redirect('/admin')->with('toast_error',  'Data tidak berhasil dihapus!');
+        }
     }
 }
