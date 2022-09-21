@@ -47,11 +47,6 @@
                     <form action="/lecturers-update/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Name</label>
-                            <input name="name" type="text" class="form-control" placeholder="Name"
-                                value="{{ $data->name }}" required>
-                        </div>
-                        <div class="form-group">
                             <label>Is Lecturer</label>
                             <select name="is_lecturer" class="form-control" required>
                                 <option selected>
@@ -61,8 +56,8 @@
                                         No
                                     @endif
                                 </option>
-                                <option value="true">Yes</option>
-                                <option value="false">No</option>
+                                <option value="TRUE">Yes</option>
+                                <option value="FALSE">No</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -75,8 +70,8 @@
                                         No
                                     @endif
                                 </option>
-                                <option value="true">Yes</option>
-                                <option value="false">No</option>
+                                <option value="TRUE">Yes</option>
+                                <option value="FALSE">No</option>
                             </select>
                         </div>
 

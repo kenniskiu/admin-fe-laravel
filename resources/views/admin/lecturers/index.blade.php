@@ -77,7 +77,7 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        {{$x->user->full_name}}
+                                        {{ $x->user->full_name }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         @if ($x->is_lecturer == true)
@@ -94,8 +94,8 @@
                                         @endif
                                     </td>
                                     <td class="text-sm col-lg-2">
-                                        <a href="/lecturers-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
-                                            data-bs-original-title="Edit">
+                                        <a href="/lecturers-edit/{{ $x->id }}" class="mx-3"
+                                            data-bs-toggle="tooltip" data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
                                         </a>
                                         <a href="#" class="delete-lecturer" data-id="{{ $x->id }}"

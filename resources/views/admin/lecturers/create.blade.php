@@ -47,21 +47,25 @@
                     <form action="/lecturers-store" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Name</label>
-                            <input name="name" type="text" class="form-control" placeholder="Name" required>
+                            <label>Full Name</label>
+                            <select name="user_id" class="form-control" required>
+                                @foreach ($data as $x)
+                                    <option value="{{ $x->id }}">{{ $x->full_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Is Lecturer</label>
                             <select name="is_lecturer" class="form-control">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
+                                <option value="TRUE">Yes</option>
+                                <option value="FALSE">No</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Is Mentor</label>
                             <select name="is_mentor" class="form-control">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
+                                <option value="TRUE">Yes</option>
+                                <option value="FALSE">No</option>
                             </select>
                         </div>
                         <a href="/lecturers" type="button" class="btn btn-outline-primary btn-sm mb-0">

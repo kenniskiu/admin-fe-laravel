@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lecturers;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LecturersController extends Controller
@@ -32,7 +33,10 @@ class LecturersController extends Controller
     public function create()
     {
         try {
-            return view('admin.lecturers.create');
+            $user = User::all();
+            return view('admin.lecturers.create', [
+                'data' => $user
+            ]);
         } catch (\Throwable $th) {
             return redirect('/lecturers')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
@@ -48,7 +52,7 @@ class LecturersController extends Controller
     {
         try {
             Lecturers::create([
-                'name' => $request->name,
+                'user_id' => $request->user_id,
                 'is_lecturer' => $request->is_lecturer,
                 'is_mentor' => $request->is_mentor,
             ]);
@@ -98,7 +102,6 @@ class LecturersController extends Controller
     {
         try {
             Lecturers::where("id", $id)->update([
-                'name' => $request->name,
                 'is_lecturer' => $request->is_lecturer,
                 'is_mentor' => $request->is_mentor,
             ]);
