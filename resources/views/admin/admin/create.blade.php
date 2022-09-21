@@ -27,10 +27,10 @@
             </li>
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark" aria-current="page">Students</li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Edit Students</li>
+            <li class="breadcrumb-item text-sm text-dark" aria-current="page">Admin</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">New Admin</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Edit Students</h6>
+        <h6 class="font-weight-bolder mb-0">New Admin</h6>
     </nav>
 
     <div class="row mt-4">
@@ -40,37 +40,22 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">Edit Students</h5>
+                            <h5 class="mb-0">New Admin</h5>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="/students-update/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="/admin-store" method="POST" enctype="multipart/form-data">
                         @csrf
-
                         <div class="form-group">
-                            <label>Users</label>
-                            <select name="user_id" data-placeholder="Choose one thing" class="select2">
-                                <option selected value="{{ $data->user_id }}">{{ $data->user->full_name }}</option>
-                                @foreach ($user as $x)
-                                    <option value="{{ $x->id }}">{{ $x->full_name }}</option>
-                                @endforeach
-                            </select>
+                            <label>Gmail</label>
+                            <input name="email" type="email" class="form-control" required>
                         </div>
-
                         <div class="form-group">
-                            <label>Major</label>
-                            <select name="major_id" data-placeholder="Choose one thing" class="select2">
-                                <option selected value="{{ $data->major_id }}">{{ $data->major->name }}</option>
-                                @foreach ($major as $x)
-                                    <option value="{{ $x->id }}">{{ $x->name }}</option>
-                                @endforeach
-                            </select>
-                            {{-- <input class="basic" value='  @foreach ($major as $x) {{ $x->name }} @endforeach'> --}}
+                            <label>Password</label>
+                            <input name="password" type="password" class="form-control" required>
                         </div>
-
-
-                        <a href="/students" type="button" class="btn btn-outline-primary btn-sm mb-0">
+                        <a href="/admin" type="button" class="btn btn-outline-primary btn-sm mb-0">
                             Back
                         </a>
                         <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">

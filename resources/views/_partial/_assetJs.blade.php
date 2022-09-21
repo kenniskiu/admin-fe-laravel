@@ -66,7 +66,27 @@
     @include('sweetalert::alert')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    {{-- Select 2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"
+        integrity="sha256-AFAYEOkzB6iIKnTYZOdUf9FFje6lOTYdwRJKwTN5mks=" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            $('.select2').each(function() {
+                $(this).select2({
+                    theme: 'bootstrap4',
+                    width: $(this).data('width') ? $(this).data('width') : $(this).hasClass(
+                        'w-100') ? '100%' : 'style',
+                    placeholder: $(this).data('placeholder'),
+                    allowClear: Boolean($(this).data('allow-clear')),
+                    closeOnSelect: !$(this).attr('multiple'),
+                });
+            });
+        });
+    </script>
+    {{-- Select 2 --}}
+
 
     {{-- Tagify --}}
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
@@ -75,7 +95,7 @@
 
     <script>
         // The DOM element you wish to replace with Tagify
-        var input = document.querySelector('input[name=basic]');
+        var input = document.querySelector('input[class=basic]');
 
         // initialize Tagify on the above input node reference
         new Tagify(input)

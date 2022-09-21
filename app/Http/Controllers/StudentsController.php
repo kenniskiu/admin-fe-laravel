@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Major;
 use App\Models\Students;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
 
@@ -16,8 +18,7 @@ class StudentsController extends Controller
     public function index()
     {
         try {
-            $data = Students::join('users','users.id','=','students.user_id')
-                        ->get(['users.*']);
+            $data = Students::all();
             return view('admin.students.index', [
                 'data' => $data
             ]);
@@ -36,7 +37,13 @@ class StudentsController extends Controller
     public function create()
     {
         try {
-            return view('admin.students.create');
+            $major = Major::all();
+            $user = User::all();
+
+            return view('admin.students.create', [
+                'major' => $major,
+                'user' => $user
+            ]);
         } catch (\Throwable $th) {
             return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
@@ -51,13 +58,16 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         try {
+            $major = '{' . $request->major_id . '}';
+
             Students::create([
-                'full_name' => $request->full_name,
-                'program' => $request->program,
+                'user_id' => $request->user_id,
+                'major_id' => $major,
             ]);
             return redirect('/students')->with('toast_success', 'Data berhasil ditambah!');
         } catch (\Throwable $th) {
             return redirect('/students')->with('toast_error',  'Data tidak berhasil ditambah!');
+            // dd($th);
         }
     }
 
@@ -70,9 +80,14 @@ class StudentsController extends Controller
     public function edit($id)
     {
         try {
+            $major = Major::all();
+            $user = User::all();
+
             $data = Students::find($id);
             return view('admin.students.edit', [
-                'data' => $data
+                'data' => $data,
+                'major' => $major,
+                'user' => $user
             ]);
         } catch (\Throwable $th) {
             return redirect('/students')->with('toast_error',  'Halaman tidak dapat di akses!');
@@ -89,9 +104,13 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         try {
+
+
+            // $major = '{' . $request->major_id . '}';
+
             Students::where("id", $id)->update([
-                'full_name' => $request->full_name,
-                'program' => $request->program,
+                'user_id' => $request->user_id,
+                'major_id' => $request->major_id,
             ]);
             return redirect('/students')->with('toast_success', 'Data berhasil diubah!');
         } catch (\Throwable $th) {
