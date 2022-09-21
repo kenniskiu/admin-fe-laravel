@@ -21,7 +21,7 @@ class MajorController extends Controller
             ]);
             // dd($data);
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
         }
     }
 

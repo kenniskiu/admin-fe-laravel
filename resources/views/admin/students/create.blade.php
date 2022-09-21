@@ -47,13 +47,23 @@
                 <div class="card-body">
                     <form action="/students-store" method="POST" enctype="multipart/form-data">
                         @csrf
+
                         <div class="form-group">
-                            <label>Full Name</label>
-                            <input name="full_name" type="text" class="form-control" placeholder="Full Name" required>
+                            <label>Users</label>
+                            <select name="user_id" data-placeholder="Choose one thing" class="select2">
+                                @foreach ($user as $x)
+                                    <option value="{{ $x->id }}">{{ $x->full_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
+
                         <div class="form-group">
-                            <label>Program</label>
-                            <input name="program" type="text" class="form-control" placeholder="Program" required>
+                            <label>Major</label>
+                            <select name="major_id" data-placeholder="Choose one thing" class="select2">
+                                @foreach ($major as $x)
+                                    <option value="{{ $x->id }}">{{ $x->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <a href="/students" type="button" class="btn btn-outline-primary btn-sm mb-0">

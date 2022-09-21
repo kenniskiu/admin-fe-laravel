@@ -75,10 +75,10 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        {{ $x->id }}
+                                        {{ $x->user->full_name }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        {{ $x->full_name }}
+                                        {{ $x->major->name }}
                                     </td>
                                     <td class="text-sm col-lg-2">
                                         <a href="/students-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"

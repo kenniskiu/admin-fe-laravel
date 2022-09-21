@@ -10,6 +10,29 @@
                     <p class="text-sm mb-0">
                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                     </p>
+                    <div class="form-group">
+                        <label>Example of select</label>
+                        <select data-placeholder="Choose one thing" class="select2">
+                            <option data-select2-id="3"></option>
+                            <option data-select2-id="35">1</option>
+                            <option data-select2-id="36">2</option>
+                            <option data-select2-id="37">3</option>
+                            <option data-select2-id="38">4</option>
+                            <option data-select2-id="39">5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Example of select</label>
+                        <select data-placeholder="Choose one thing" class="select2">
+                            <option data-select2-id="3"></option>
+                            <option data-select2-id="35">1</option>
+                            <option data-select2-id="36">2</option>
+                            <option data-select2-id="37">3</option>
+                            <option data-select2-id="38">4</option>
+                            <option data-select2-id="39">5</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-flus datatable-basic">
