@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
-use App\Models\Major;
+use Illuminate\Support\Facades\Auth;
 
-class MajorController extends Controller
+class AdminController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -15,13 +16,12 @@ class MajorController extends Controller
     public function index()
     {
         try {
-            $data = Major::all();
-            return view('admin.major.index', [
-                'data' => $data
+            $Admin = Admin::all();
+            return view('admin.admin.index', [
+                'data' => $Admin
             ]);
-            // dd($data);
         } catch (\Throwable $th) {
-            // dd($th);
+            return redirect('/dashboard-admin')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -33,11 +33,12 @@ class MajorController extends Controller
     public function create()
     {
         try {
-            return view('admin.major.create');
+            return view('admin.admin.create');
         } catch (\Throwable $th) {
-            return redirect('/majors')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/admin')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -48,14 +49,27 @@ class MajorController extends Controller
     public function store(Request $request)
     {
         try {
-            Major::create([
-                'name' => $request->name,
+            Admin::create([
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'created_by' => Auth::user()->id,
             ]);
-            return redirect('/majors')->with('toast_success', 'Data berhasil ditambah!');
+            return redirect('/admin')->with('toast_success', 'Data berhasil ditambah!');
         } catch (\Throwable $th) {
-            dd($th);
-            // return redirect('/Majors')->with('toast_error',  'Data tidak berhasil ditambah!');
+            return redirect('/admin')->with('toast_error',  'Data tidak berhasil ditambah!');
+            // dd($th);
         }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -66,14 +80,6 @@ class MajorController extends Controller
      */
     public function edit($id)
     {
-        try {
-            $data = Major::find($id);
-            return view('admin.major.edit', [
-                'data' => $data
-            ]);
-        } catch (\Throwable $th) {
-            return redirect('/majors')->with('toast_error',  'Halaman tidak dapat di akses!');
-        }
     }
 
     /**
@@ -85,14 +91,7 @@ class MajorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            Major::where("id", $id)->update([
-                'name' => $request->name,
-            ]);
-            return redirect('/majors')->with('toast_success', 'Data berhasil diubah!');
-        } catch (\Throwable $th) {
-            return redirect('/majors')->with('toast_error',  'Data tidak berhasil diubah!');
-        }
+        //
     }
 
     /**
@@ -104,10 +103,10 @@ class MajorController extends Controller
     public function destroy($id)
     {
         try {
-            Major::where('id', $id)->delete();
-            return redirect('/majors')->with('toast_success', 'Data berhasil dihapus!');
+            Admin::where('id', $id)->delete();
+            return redirect('/admin')->with('toast_success', 'Data berhasil dihapus!');
         } catch (\Throwable $th) {
-            dd($th);
+            return redirect('/admin')->with('toast_error',  'Data tidak berhasil dihapus!');
         }
     }
 }

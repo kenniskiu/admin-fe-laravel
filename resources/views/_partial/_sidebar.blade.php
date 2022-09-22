@@ -70,6 +70,12 @@
                 <div class="collapse " id="pagesExamples">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item ">
+                            <a class="nav-link " href="/admin">
+                                <span class="sidenav-mini-icon"> A </span>
+                                <span class="sidenav-normal">Admin</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
                             <a class="nav-link " href="/students">
                                 <span class="sidenav-mini-icon"> S </span>
                                 <span class="sidenav-normal">Student</span>

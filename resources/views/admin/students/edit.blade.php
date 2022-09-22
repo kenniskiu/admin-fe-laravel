@@ -47,16 +47,28 @@
                 <div class="card-body">
                     <form action="/students-update/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
                         <div class="form-group">
-                            <label>Full Name</label>
-                            <input name="full_name" type="text" class="form-control" placeholder="Full Name"
-                                value="{{ $data->full_name }}" required>
+                            <label>Users</label>
+                            <select name="user_id" data-placeholder="Choose one thing" class="select2">
+                                <option selected value="{{ $data->user_id }}">{{ $data->user->full_name }}</option>
+                                @foreach ($user as $x)
+                                    <option value="{{ $x->id }}">{{ $x->full_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
+
                         <div class="form-group">
-                            <label>Program</label>
-                            <input name="program" type="text" class="form-control" placeholder="Program"
-                                value="{{ $data->program }}" required>
+                            <label>Major</label>
+                            <select name="major_id" data-placeholder="Choose one thing" class="select2">
+                                <option selected value="{{ $data->major_id }}">{{ $data->major->name }}</option>
+                                @foreach ($major as $x)
+                                    <option value="{{ $x->id }}">{{ $x->name }}</option>
+                                @endforeach
+                            </select>
+                            {{-- <input class="basic" value='  @foreach ($major as $x) {{ $x->name }} @endforeach'> --}}
                         </div>
+
 
                         <a href="/students" type="button" class="btn btn-outline-primary btn-sm mb-0">
                             Back

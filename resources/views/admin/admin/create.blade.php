@@ -27,9 +27,10 @@
             </li>
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Lecturers</li>
+            <li class="breadcrumb-item text-sm text-dark" aria-current="page">Admin</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">New Admin</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Lecturers</h6>
+        <h6 class="font-weight-bolder mb-0">New Admin</h6>
     </nav>
 
     <div class="row mt-4">
@@ -39,43 +40,22 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">Edit Lecturers</h5>
+                            <h5 class="mb-0">New Admin</h5>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="/lecturers-update/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="/admin-store" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Is Lecturer</label>
-                            <select name="is_lecturer" class="form-control" required>
-                                <option selected>
-                                    @if ($data->is_lecturer == true)
-                                        Yes
-                                    @else
-                                        No
-                                    @endif
-                                </option>
-                                <option value="TRUE">Yes</option>
-                                <option value="FALSE">No</option>
-                            </select>
+                            <label>Gmail</label>
+                            <input name="email" type="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Is Mentor</label>
-                            <select name="is_mentor" class="form-control" required>
-                                <option selected>
-                                    @if ($data->is_mentor == true)
-                                        Yes
-                                    @else
-                                        No
-                                    @endif
-                                </option>
-                                <option value="TRUE">Yes</option>
-                                <option value="FALSE">No</option>
-                            </select>
+                            <label>Password</label>
+                            <input name="password" type="password" class="form-control" required>
                         </div>
-
-                        <a href="/lecturers" type="button" class="btn btn-outline-primary btn-sm mb-0">
+                        <a href="/admin" type="button" class="btn btn-outline-primary btn-sm mb-0">
                             Back
                         </a>
                         <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">

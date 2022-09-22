@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LecturersController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentsController;
@@ -56,7 +57,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/download/{filename}', [VerifyController::class, 'downloadFile']);
 
     // major
-
     Route::get('/majors', [MajorController::class, 'index']);
     Route::get('/majors-create', [MajorController::class, 'create']);
     Route::post('/majors-store', [MajorController::class, 'store']);
@@ -88,14 +88,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/session-update/{id}', [SessionController::class, 'update']);
     Route::get('/session-destroy/{id}', [SessionController::class, 'destroy']);
 
-     // session
+     // assignment
      Route::get('/assignment', [AssignmentController::class, 'index']);
      Route::get('/assignment-create', [AssignmentController::class, 'create']);
      Route::post('/assignment-store', [AssignmentController::class, 'store']);
      Route::get('/assignment-edit/{id}', [AssignmentController::class, 'edit']);
      Route::post('/assignment-update/{id}', [AssignmentController::class, 'update']);
      Route::get('/assignment-destroy/{id}', [AssignmentController::class, 'destroy']);
-});
+
+    // Admin
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/admin-create', [AdminController::class, 'create']);
+    Route::post('/admin-store', [AdminController::class, 'store']);
+    Route::get('/admin-destroy/{id}', [AdminController::class, 'destroy']);
 
 // Tidak perlu login pun bisa di akses :)
 Route::get('/test', function () {
