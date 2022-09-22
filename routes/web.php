@@ -101,7 +101,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin-create', [AdminController::class, 'create']);
     Route::post('/admin-store', [AdminController::class, 'store']);
     Route::get('/admin-destroy/{id}', [AdminController::class, 'destroy']);
-
+});
 // Tidak perlu login pun bisa di akses :)
 Route::get('/test', function () {
     return view('admin.Table');
