@@ -7,6 +7,9 @@ use App\Http\Controllers\VerifyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\AssignmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,6 +71,30 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/subjects-edit/{id}', [SubjectController::class, 'edit']);
     Route::post('/subjects-update/{id}', [SubjectController::class, 'update']);
     Route::get('/subjects-destroy/{id}', [SubjectController::class, 'destroy']);
+
+    // modules
+    Route::get('/modules', [ModuleController::class, 'index']);
+    Route::get('/modules-create', [ModuleController::class, 'create']);
+    Route::post('/modules-store', [ModuleController::class, 'store']);
+    Route::get('/modules-edit/{id}', [ModuleController::class, 'edit']);
+    Route::post('/modules-update/{id}', [ModuleController::class, 'update']);
+    Route::get('/modules-destroy/{id}', [ModuleController::class, 'destroy']);
+
+    // session
+    Route::get('/session', [SessionController::class, 'index']);
+    Route::get('/session-create', [SessionController::class, 'create']);
+    Route::post('/session-store', [SessionController::class, 'store']);
+    Route::get('/session-edit/{id}', [SessionController::class, 'edit']);
+    Route::post('/session-update/{id}', [SessionController::class, 'update']);
+    Route::get('/session-destroy/{id}', [SessionController::class, 'destroy']);
+
+     // session
+     Route::get('/assignment', [AssignmentController::class, 'index']);
+     Route::get('/assignment-create', [AssignmentController::class, 'create']);
+     Route::post('/assignment-store', [AssignmentController::class, 'store']);
+     Route::get('/assignment-edit/{id}', [AssignmentController::class, 'edit']);
+     Route::post('/assignment-update/{id}', [AssignmentController::class, 'update']);
+     Route::get('/assignment-destroy/{id}', [AssignmentController::class, 'destroy']);
 });
 
 // Tidak perlu login pun bisa di akses :)

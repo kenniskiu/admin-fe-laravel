@@ -27,10 +27,10 @@
             </li>
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Curriculum</a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark" aria-current="page">Subjects</li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">New Subject</li>
+            <li class="breadcrumb-item text-sm text-dark" aria-current="page">Modules</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">New Module</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">New Subject</h6>
+        <h6 class="font-weight-bolder mb-0">New Module</h6>
     </nav>
 
     <div class="row mt-4">
@@ -40,50 +40,34 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">New Subject</h5>
+                            <h5 class="mb-0">New Module</h5>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="/subjects-store" method="POST" enctype="multipart/form-data">
+                    <form action="/modules-store" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="container">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label>Name</label>
-                                        <input name="name" type="text" class="form-control" placeholder="Name" required>
+                                        <label>Session ID</label>
+                                        <input name="session_id" type="text" class="form-control" placeholder="Session ID" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Number of Sessions</label>
-                                        <input name="number_of_sessions" type="text" class="form-control" placeholder="Number of sessions" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Level</label>
-                                        <input name="level" type="text" class="form-control" placeholder="Level" required>
+                                        <label>Video ID</label>
+                                        <input name="video_id" type="text" class="form-control" placeholder="Video ID" required>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label>Lecturer</label>
-                                        <input name='lecturers' value='' class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Degree</label>
-                                        <input name="degree" type="text" class="form-control" placeholder="Degree" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Credits</label>
-                                        <input name="credits" type="text" class="form-control" placeholder="Credits" required>
+                                        <label>Document ID</label>
+                                        <input name='document_id' value='' class="form-control"  placeholder="Document ID">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group container mt-0">
-                            <label>Description</label>
-                            <input name="description" type="textarea" class="form-control" placeholder="Description" required>
-                        </div>
-                        <a href="/subjects" type="button" class="btn btn-outline-primary btn-sm mb-0">
+                        <a href="/modules" type="button" class="btn btn-outline-primary btn-sm mb-0">
                             Back
                         </a>
                         <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">

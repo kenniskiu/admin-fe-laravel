@@ -130,6 +130,24 @@
                                 <span class="sidenav-normal"> Subjects </span>
                             </a>
                         </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/modules">
+                                <span class="sidenav-mini-icon"> M </span>
+                                <span class="sidenav-normal"> Modules </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/session">
+                                <span class="sidenav-mini-icon"> S </span>
+                                <span class="sidenav-normal"> Session </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/assignment">
+                                <span class="sidenav-mini-icon"> A </span>
+                                <span class="sidenav-normal"> Assignment </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
