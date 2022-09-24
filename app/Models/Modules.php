@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuids;
+use App\Casts\PgsqlArray;
 
 class Modules extends Model
 {
@@ -17,6 +18,10 @@ class Modules extends Model
         'video_id',
         'document_id',
     ];
+    protected $casts = [
+        'document_id' => PgsqlArray::class
+    ];
+
     public function session()
     {
         return $this->belongsTo(Session::class, 'session_id');

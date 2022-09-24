@@ -61,34 +61,38 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Video ID</label>
-                                        <select name="video_id[]" data-placeholder="Choose one thing" class="select2" value={{$data->session_id}} multiple="multiple">
-                                            <optgroup label="Selected Video">
-                                                @foreach ($moduleVideo as $p)
-                                                    <option value="{{ $p->id }}" selected>{{ $p->description }}</option>
+                                        <select name="video_id[]" data-placeholder="Choose Video" class="select2" multiple="multiple">
+                                            @foreach ($video as $x)
+                                                @foreach ($moduleVideo as $y)
+                                                    @if($x->id == $y->id)
+                                                        <option selected value="{{$x->id}}">
+                                                            {{$x->description}}
+                                                        </option>
+                                                    @elseif ($x->id != $y->id)
+                                                        <option value="{{$x->id}}">
+                                                            {{$x->description}}
+                                                        </option>
+                                                    @endif
                                                 @endforeach
-                                            </optgroup>
-                                            <optgroup label="All Videos">
-                                                @foreach ($moduleVideo as $v)
-                                                    <option value="{{$v->id}}">{{$v->description}}</option>
-                                                @endforeach
-                                            </optgroup>
+                                            @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col">
                                     <div class="form-group">
                                         <label>Document</label>
                                         <select name="document_id[]" data-placeholder="Choose Document" class="select2" multiple="multiple">
-                                            <optgroup label="All Documents">
-                                                @foreach ($document as $x)
-                                                    <option value="{{ $x->id }}">{{ $x->file }}</option>
+                                            @foreach ($document as $x)
+                                                @foreach ($moduleDocument as $y)
+                                                    @if($x->id == $y->id)
+                                                        <option selected value="{{$x->id}}">
+                                                            {{$x->file}}
+                                                        </option>
+                                                    @elseif ($x->id != $y->id)
+                                                        <option value="{{$x->id}}">
+                                                            {{$x->file}}
+                                                        </option>
+                                                    @endif
                                                 @endforeach
-                                            </optgroup>
-                                            <optgroup label="Selected Documents">
-                                                @foreach ($moduleDocument as $a)
-                                                    <option selected value="{{ $a->id }}">{{ $a->file }}</option>
-                                                @endforeach
-                                            </optgroup>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
