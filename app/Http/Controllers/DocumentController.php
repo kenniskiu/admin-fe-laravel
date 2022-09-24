@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Video;
+use App\Models\Document;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\DB;
 
-class VideoController extends Controller
+class DocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +17,13 @@ class VideoController extends Controller
     public function index()
     {
         try {
-            $data = Video::all();
-            return view('admin.video.index', [
+            $data = Document::all();
+            return view('admin.document.index', [
                 'data' => $data,
             ]);
         } catch (\Throwable $th) {
             dd($th);
-            return redirect('/video')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/document')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -35,13 +35,12 @@ class VideoController extends Controller
     public function create()
     {
         try {
-            $data = Video::all();
+            $data = Document::all();
 
-            return view('admin.video.create', [
-                'data' => $data,
-            ]);
+            return view('admin.document.create');
+
         } catch (\Throwable $th) {
-            return redirect('/video')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/document')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -54,14 +53,20 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         try {
-            Video::create([
-                'url'=>$request->url,
-                'description'=>$request->description
+            $input = $request->all();
+            if($request->hasFile('file')){
+                $image = $request->file('file');
+                $image_name = $image->getClientOriginalName();
+                $input['file'] = $image_name;
+            }
+            Document::create([
+                'description'=>$input['description'],
+                'file'=>$input['file']
             ]);
-            return redirect('/video')->with('toast_success', 'Data berhasil ditambah!');
+        return redirect('/document')->with('toast_success', 'Data berhasil ditambah!');
         } catch (\Throwable $th) {
             dd($th);
-            return redirect('/video')->with('toast_error',  'Data tidak berhasil ditambah!');
+            return redirect('/document')->with('toast_error',  'Data tidak berhasil ditambah!');
         }
     }
 
@@ -74,12 +79,13 @@ class VideoController extends Controller
     public function edit($id)
     {
         try {
-            $data = Video::find($id);
-            return view('admin.video.edit', [
+            $data = Document::all();
+
+            return view('admin.document.edit', [
                 'data' => $data,
             ]);
         } catch (\Throwable $th) {
-            return redirect('/video')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/document')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
 
@@ -93,13 +99,13 @@ class VideoController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            Video::where("id", $id)->update([
-                'url'=>$request->url,
-                'description'=>$request->description
+            Document::where("id", $id)->update([
+                'file' => $request->file,
+                'description' => $request->description
             ]);
-            return redirect('/video')->with('toast_success', 'Data berhasil diubah!');
+            return redirect('/document')->with('toast_success', 'Data berhasil diubah!');
         } catch (\Throwable $th) {
-            return redirect('/video')->with('toast_error',  'Data tidak berhasil diubah!');
+            return redirect('/document')->with('toast_error',  'Data tidak berhasil diubah!');
         }
     }
 
@@ -112,10 +118,10 @@ class VideoController extends Controller
     public function destroy($id)
     {
         try {
-            Video::where('id', $id)->delete();
-            return redirect('/video')->with('toast_success', 'Data berhasil dihapus!');
+            Document::where('id', $id)->delete();
+            return redirect('/document')->with('toast_success', 'Data berhasil dihapus!');
         } catch (\Throwable $th) {
-            return redirect('/video')->with('toast_error',  'Data tidak berhasil dihapus!');
+            return redirect('/document')->with('toast_error',  'Data tidak berhasil dihapus!');
         }
     }
 }

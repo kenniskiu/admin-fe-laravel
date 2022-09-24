@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuids;
 
+use App\Models\Subject;
+
 class Session extends Model
 {
     use HasFactory,Uuids;
@@ -20,4 +22,8 @@ class Session extends Model
         'type',
         'description',
     ];
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'subject_id');
+    }
 }

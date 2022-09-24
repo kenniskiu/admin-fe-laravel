@@ -1,5 +1,6 @@
 @extends('_layout.layout_main')
 
+
 @section('content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -25,11 +26,11 @@
                     </svg>
                 </a>
             </li>
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Curriculum</a>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Modules</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Document</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Modules</h6>
+        <h6 class="font-weight-bolder mb-0">Document</h6>
     </nav>
 
     <div class="row mt-4">
@@ -39,15 +40,15 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">Modules</h5>
+                            <h5 class="mb-0">All Document</h5>
                             {{-- <p class="text-sm mb-0">
                                 A lightweight, extendable, dependency-free javascript HTML table plugin.
                             </p> --}}
                         </div>
                         <div class="ms-auto my-auto mt-lg-0 mt-4">
                             <div class="ms-auto my-auto">
-                                <a href="/modules-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
-                                    New modules
+                                <a href="/document-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
+                                    New Document
                                 </a>
                             </div>
                         </div>
@@ -59,12 +60,9 @@
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Subject's Session
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File name
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Video ID
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Document ID
-                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description
                                 </th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action
                                 </th>
@@ -72,39 +70,28 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $x)
-                            <tr>
-                                <td class="text-sm font-weight-normal col-lg-1">
-                                    {{ $loop->iteration }}
-                                </td>
-                                <td class="text-sm font-weight-normal">
-                                    {{ $x->session->subject->name }} session No: {{$x->session->session_no}}
-                                </td>
-                                <td class="text-sm font-weight-normal p-0">
-                                    <ul>
-                                        @foreach ($video as $v)
-                                            <li>{{$v->description}}</li>
-                                        @endforeach
-                                    </ul>
-                                </td>
-                                <td class="text-sm font-weight-normal p-0 m-0">
-                                    <ul>
-                                        @foreach ($fileName as $y)
-                                            <li>{{$y->file}}</li>
-                                        @endforeach
-                                    </ul>
-                                </td>
-                                <td class="text-sm col-lg-2 p-0 m-0">
-                                    <a href="/modules-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Edit">
-                                        <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="#" class="delete-subject" data-id="{{ $x->id }}"
-                                        type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
-                                        <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
+                                <tr>
+                                    <td class="text-sm font-weight-normal col-lg-1">
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td class="text-sm font-weight-normal">
+                                        {{ $x->file }}
+                                    </td>
+                                    <td class="text-sm font-weight-normal">
+                                        {{ $x->description }}
+                                    </td>
+                                    <td class="text-sm col-lg-2">
+                                        <a href="/document-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                            data-bs-original-title="Edit">
+                                            <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="#" class="delete-document" data-id="{{ $x->id }}"
+                                            type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
+                                            <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -117,18 +104,20 @@
     {{-- DELETE WITH SWEETALERT --}}
     <script>
         // get class
-        $('.delete-subject').click(function() {
+        $('.delete-document').click(function() {
             // get attr
             let id = $(this).attr('data-id');
             swal({
-                    title: "Document",
+                    title: "Hapus Data",
                     text: "Anda yakin ingin menghapus?",
+                    icon: "warning",
                     buttons: true,
+                    dangerMode: true,
                 })
                 .then((willDelete) => {
                     if (willDelete) {
                         //Memanggil routes delete"
-                        window.location = "/modules-destroy/" + id + "";
+                        window.location = "/document-destroy/" + id + "";
                         swal("Data Anda telah dihapus!", {
                             icon: "success",
                         });
@@ -137,5 +126,3 @@
         });
     </script>
 @endsection
-
-

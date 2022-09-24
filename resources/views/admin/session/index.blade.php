@@ -80,7 +80,7 @@
                                     {{ $loop->iteration }}
                                 </td>
                                 <td class="text-sm font-weight-normal">
-                                    {{ $x->subject_id }}
+                                    {{ $x->subject->name }}
                                 </td>
                                 <td class="text-sm font-weight-normal">
                                     {{ $x->description }}

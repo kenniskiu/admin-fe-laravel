@@ -47,22 +47,34 @@
                 <div class="card-body">
                     <form action="/modules-store" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="container">
+                        <div class="container p-0">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                         <label>Session ID</label>
-                                        <input name="session_id" type="text" class="form-control" placeholder="Session ID" required>
+                                        <select name="session_id" data-placeholder="Choose one thing" class="select2">
+                                            @foreach ($session as $x)
+                                                <option value="{{ $x->id }}">{{ $x->subject->name }} session no: {{$x->session_no}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Video ID</label>
-                                        <input name="video_id" type="text" class="form-control" placeholder="Video ID" required>
+                                        <select name="video_id[]" data-placeholder="Choose one thing" class="select2" multiple="multiple">
+                                            @foreach ($video as $x)
+                                                <option value="{{ $x->id }}">{{ $x->url}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label>Document ID</label>
-                                        <input name='document_id' value='' class="form-control"  placeholder="Document ID">
+                                        <label>Document</label>
+                                        <select name="document_id[]" data-placeholder="Choose Document" class="select2" multiple="multiple">
+                                            @foreach ($document as $x)
+                                                <option value="{{ $x->id }}">{{ $x->file }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>

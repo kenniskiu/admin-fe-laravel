@@ -1,0 +1,8 @@
+
+    //Video
+    Route::get('/video', [VideoController::class, 'index']);
+    Route::get('/video-create', [VideoController::class, 'create']);
+    Route::post('/video-store', [VideoController::class, 'store']);
+    Route::get('/video-destroy/{id}', [VideoController::class, 'destroy']);
+    Route::get('/video-edit/{id}', [VideoController::class, 'edit']);
+    Route::post('/video-update/{id}', [AssignmentController::class, 'update']);

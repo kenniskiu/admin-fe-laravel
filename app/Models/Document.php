@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Traits\Uuids;
 
-class Video extends Model
+class Document extends Model
 {
     use HasFactory, Uuids;
 
-    protected $table = 'videos';
+    protected $table = 'documents';
     protected $primaryKey = "id";
     protected $fillable = [
-        'url',
-        'description',
+        'file',
+        'description'
     ];
 }

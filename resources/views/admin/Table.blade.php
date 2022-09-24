@@ -33,6 +33,11 @@
                             <option data-select2-id="39">5</option>
                         </select>
                     </div>
+                    <label>Example of select</label>
+                    <select class="select2" multiple="multiple" name="test">
+                        <option>test</option>
+                        <option>test1312</option>
+                    </select>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-flus datatable-basic">
@@ -515,3 +520,16 @@
         </div>
     </div>
 @endsection
+
+<script>
+    $(".test").select2({
+        tags: true,
+        tokenSeparators: [',', ' ']
+    })
+    $('.test').select2({
+  insertTag: function (data, tag) {
+    // Insert the tag at the end of the results
+    data.push(tag);
+  }
+    });
+</script>

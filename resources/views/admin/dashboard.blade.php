@@ -125,8 +125,8 @@
                             <div class="d-flex">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">{{$x->user}}</h6>
-                                        <span class="text-xs">{{$x->user}}</span>
+                                        <h6 class="mb-1 text-dark text-sm">{{$x->id}}</h6>
+                                        <span class="text-xs">{{$x->id}}</span>
                                     </div>
                                 </div>
                             </div>

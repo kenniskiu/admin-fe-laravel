@@ -11,6 +11,8 @@ use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -101,6 +103,23 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin-create', [AdminController::class, 'create']);
     Route::post('/admin-store', [AdminController::class, 'store']);
     Route::get('/admin-destroy/{id}', [AdminController::class, 'destroy']);
+
+    // Document
+    Route::get('/document', [DocumentController::class, 'index']);
+    Route::get('/document-create', [DocumentController::class, 'create']);
+    Route::post('/document-store', [DocumentController::class, 'store']);
+    Route::get('/document-edit/{id}', [DocumentController::class, 'edit']);
+    Route::get('/document-destroy/{id}', [DocumentController::class, 'destroy']);
+    Route::post('/document-update/{id}', [DocumentController::class, 'update']);
+
+    //Video
+    Route::get('/video', [VideoController::class, 'index']);
+    Route::get('/video-create', [VideoController::class, 'create']);
+    Route::post('/video-store', [VideoController::class, 'store']);
+    Route::get('/video-destroy/{id}', [VideoController::class, 'destroy']);
+    Route::get('/video-edit/{id}', [VideoController::class, 'edit']);
+    Route::post('/video-update/{id}', [VideoController::class, 'update']);
+
 });
 // Tidak perlu login pun bisa di akses :)
 Route::get('/test', function () {

@@ -27,10 +27,9 @@
             </li>
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark" aria-current="page">modules</li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Edit modules</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Test</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Edit modules</h6>
+        <h6 class="font-weight-bolder mb-0">Test</h6>
     </nav>
 
     <div class="row mt-4">
@@ -40,61 +39,36 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">Edit modules</h5>
+                            <h5 class="mb-0">New Test</h5>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="/modules-update/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="/test-store" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="container p-0">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Session ID</label>
-                                        <select name="session_id" data-placeholder="Choose one thing" class="select2" value={{$data->session_id}}>
-                                            @foreach ($session as $x)
-                                                <option value="{{ $x->id }}">{{ $x->subject->name }} session no: {{$x->session_no}}</option>
-                                            @endforeach
-
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Video ID</label>
-                                        <select name="video_id[]" data-placeholder="Choose one thing" class="select2" value={{$data->session_id}} multiple="multiple">
-                                            <optgroup label="Selected Video">
-                                                @foreach ($moduleVideo as $p)
-                                                    <option value="{{ $p->id }}" selected>{{ $p->description }}</option>
-                                                @endforeach
-                                            </optgroup>
-                                            <optgroup label="All Videos">
-                                                @foreach ($moduleVideo as $v)
-                                                    <option value="{{$v->id}}">{{$v->description}}</option>
-                                                @endforeach
-                                            </optgroup>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Document</label>
-                                        <select name="document_id[]" data-placeholder="Choose Document" class="select2" multiple="multiple">
-                                            <optgroup label="All Documents">
-                                                @foreach ($document as $x)
-                                                    <option value="{{ $x->id }}">{{ $x->file }}</option>
-                                                @endforeach
-                                            </optgroup>
-                                            <optgroup label="Selected Documents">
-                                                @foreach ($moduleDocument as $a)
-                                                    <option selected value="{{ $a->id }}">{{ $a->file }}</option>
-                                                @endforeach
-                                            </optgroup>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <select name="user_id" class="form-control" required>
+                                @foreach ($data as $x)
+                                    <option value="{{ $x->id }}">{{ $x->full_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <a href="/modules" type="button" class="btn btn-outline-primary btn-sm mb-0">
+                        <div class="form-group">
+                            <label>Is Lecturer</label>
+                            <select name="is_lecturer" class="form-control">
+                                <option value="TRUE">Yes</option>
+                                <option value="FALSE">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Is Mentor</label>
+                            <select name="is_mentor" class="form-control">
+                                <option value="TRUE">Yes</option>
+                                <option value="FALSE">No</option>
+                            </select>
+                        </div>
+                        <a href="/test" type="button" class="btn btn-outline-primary btn-sm mb-0">
                             Back
                         </a>
                         <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">
@@ -106,7 +80,3 @@
         </div>
     </div>
 @endsection
-
-<script>
-    $("select2").select2().select2('val','asd');
-</script>
