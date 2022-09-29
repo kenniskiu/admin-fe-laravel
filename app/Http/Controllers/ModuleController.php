@@ -24,14 +24,25 @@ class ModuleController extends Controller
     {
         try {
             $data = Modules::all();
-            dd($data->first()->toArray());
-            $docTaken = getDocTaken($data);
-            $videoTaken = getVideoTaken($data);
+            $docTaken = DB::select('SELECT id, session_id ,
+                        array_to_json(video_id) as video_id,
+                        array_to_json(document_id) as document_id
+                        FROM modules');
 
+            foreach($docTaken as $x){
+                $x->document_id = json_decode($x->document_id);
+                $x->video_id = json_decode($x->video_id);
+            }
+            foreach($data as $x){
+                foreach($docTaken as $y){
+                    if($x->id == $y->id){
+                        $x->video_id = $y->video_id;
+                        $x->document_id = $y->document_id;
+                    }
+                }
+            }
             return view('admin.modules.index', [
                 'data' => $data,
-                'fileName' =>$docTaken,
-                'video'=>$videoTaken
             ]);
         } catch (\Throwable $th) {
             dd($th);
@@ -73,35 +84,13 @@ class ModuleController extends Controller
     public function store(Request $request)
     {
         try {
-            $video = $request->video_id;
-            $document = $request->document_id;
-
-            $videoIntoDB = "{";
-            for($i=0;$i<count($video);$i++){
-               $videoIntoDB.=$video[$i];
-               if($i==count($video)-1){
-                $videoIntoDB.="}";
-               }
-               else{
-                $videoIntoDB.",";
-               }
-            }
-
-            $documentIntoDB = "{";
-                for($i=0;$i<count($document);$i++){
-                   $documentIntoDB.=$document[$i];
-                   if($i==count($document)-1){
-                    $documentIntoDB.="}";
-                   }
-                   else{
-                    $documentIntoDB.=",";
-                   }
-                }
+            $video = storeVideoIntoDB($request);
+            $document = storeDocumentIntoDB($request);
 
             Modules::create([
                 'session_id' => $request->session_id,
-                'video_id' => $videoIntoDB,
-                'document_id' => $documentIntoDB,
+                'video_id' => $video,
+                'document_id' => $document,
             ]);
             return redirect('/modules')->with('toast_success', 'Data berhasil ditambah!');
         } catch (\Throwable $th) {
@@ -123,52 +112,16 @@ class ModuleController extends Controller
             $session = Session::all();
             $document = Document::all();
             $video = Video::all();
-
-            $overallDocument = [];
-            $overallVideo = [];
-            $documentUnlisted = [];
-            $videoUnlisted = [];
-            $numberOfVideo = 0;
-
-            if(strlen($data->video_id)>0){
-                $numberOfVideo = 1;
-            }
-            for($i=0;$i<strlen($data->video_id);$i++){
-                if($data->video_id[$i]==','){
-                    $numberOfVideo++;
-                }
-            }
-            for($i=0;$i<$numberOfVideo;$i++){
-                $currentQuery = DB::select('select description,videos.id from videos inner join modules on videos.id = modules.video_id[ ? ]',[$i+1]);
-                $overallVideo[$i] = $currentQuery[0];
-            }
-
-            for($i=0;$i<$numberOfVideo;$i++){
-                $currentQuery = DB::select('select description,videos.id from videos right join modules on videos.id = modules.video_id[ ? ]',[$i+1]);
-                $videoUnlisted[$i] = $currentQuery[0];
-            }
-
-            $numberOfDocs = 0;
-            if(strlen($data->document_id)>0){
-                $numberOfDocs = 1;
-            }
-            for($i=0;$i<strlen($data->document_id);$i++){
-                if($data->document_id[$i]==','){
-                    $numberOfDocs++;
-                }
-            }
-            for($i=0;$i<$numberOfDocs;$i++){
-                $currentQuery = DB::select('select file,documents.id from documents inner join modules on documents.id = modules.document_id[ ? ]',[$i+1]);
-                $overallDocument[$i] = $currentQuery[0];
-            }
+            $documentTaken = getDocTakenEdit($data);
+            $videoTaken = getVideoTakenEdit($data);
 
             return view('admin.modules.edit', [
                 'data'=> $data,
                 'session'=>$session,
                 'document'=>$document,
                 'video'=>$video,
-                'moduleVideo'=>$overallVideo,
-                'moduleDocument'=>$overallDocument
+                'moduleVideo'=>$videoTaken,
+                'moduleDocument'=>$documentTaken
             ]);
         } catch (\Throwable $th) {
             dd($th);
@@ -186,15 +139,17 @@ class ModuleController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $video = "{".$request->document_id[0]."}";
-            $document = "{".$request->video_id[0]."}";
+            $video = getRequestedVideo($request);
+            $document = getRequestedDocument($request);
+
             Modules::where("id", $id)->update([
                 'session_id' => $request->session_id,
-                'video_id' => $request->video,
-                'document_id' => $request->document,
+                'video_id' => $video,
+                'document_id' => $document,
             ]);
             return redirect('/modules')->with('toast_success', 'Data berhasil diubah!');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect('/modules')->with('toast_error',  'Data tidak berhasil diubah!');
         }
     }

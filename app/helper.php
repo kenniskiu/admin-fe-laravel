@@ -44,7 +44,96 @@ function getVideoTaken($data){
     }
     for($i=0;$i<$numberOfVideo;$i++){
         $currentQuery = DB::select('select description from videos inner join modules on videos.id = modules.video_id[ ? ]',[$i+1]);
-        $videoTaken[$i] = $currentQuery;
+        $videoTaken[$i] = $currentQuery[0];
     }
     return $videoTaken;
 }
+
+function getDocTakenEdit($data){
+    $documentTaken = [];
+    $numberOfDocs = 0;
+
+    if(strlen($data->document_id)>0){
+        $numberOfDocs = 1;
+    }
+    for($i=0;$i<strlen($data->document_id);$i++){
+        if($data->document_id[$i]==','){
+            $numberOfDocs++;
+        }
+    }
+    for($i=0;$i<$numberOfDocs;$i++){
+        $currentQuery = DB::select('select file,documents.id from documents inner join modules on documents.id = modules.document_id[ ? ]',[$i+1]);
+        $documentTaken[$i] = $currentQuery[0];
+    }
+    return $documentTaken;
+}
+
+function getVideoTakenEdit($data){
+    $videoTaken = [];
+    $numberOfVideo = 0;
+
+    if(strlen($data->video_id)>0){
+        $numberOfVideo = 1;
+    }
+    for($i=0;$i<strlen($data->video_id);$i++){
+        if($data->video_id[$i]==','){
+            $numberOfVideo++;
+        }
+    }
+    for($i=0;$i<$numberOfVideo;$i++){
+        $currentQuery = DB::select('select description,videos.id from videos inner join modules on videos.id = modules.video_id[ ? ]',[$i+1]);
+        $videoTaken[$i] = $currentQuery[0];
+    }
+    return $videoTaken;
+}
+
+function getRequestedVideo($data){
+    $videoToBeInserted = "{";
+    if(!empty($data->video_id)){
+        for($i=0;$i<count($data->video_id);$i++){
+            $videoToBeInserted.=$data->video_id[$i];
+            if($i!=count($data->video_id)-1){
+                $videoToBeInserted.=",";
+            }
+        }
+    }
+    $videoToBeInserted.="}";
+    return $videoToBeInserted;
+}
+
+function getRequestedDocument($data){
+    $documentToBeInserted = "{";
+    if(!empty($data->document_id)){
+        for($i=0;$i<count($data->document_id);$i++){
+            $documentToBeInserted.=$data->document_id[$i];
+            if($i!=count($data->document_id)-1){
+                $documentToBeInserted.=",";
+            }
+        }
+    }
+    $documentToBeInserted.="}";
+    return $documentToBeInserted;
+}
+function storeVideoIntoDB($data){
+    $videoIntoDB = "{";
+    for($i=0;$i<count($data->video_id);$i++){
+        $videoIntoDB.=$data->video_id[$i];
+        if($i!=count($data->video_id)-1){
+            $videoIntoDB.=",";
+        }
+    }
+    $videoIntoDB.="}";
+    return $videoIntoDB;
+}
+function storeDocumentIntoDB($data){
+    $documentIntoDB = "{";
+    for($i=0;$i<count($data->document_id);$i++){
+        $documentIntoDB.=$data->document_id[$i];
+        if($i!=count($data->document_id)-1){
+            $documentIntoDB.=",";
+        }
+    }
+    $documentIntoDB.="}";
+    return $documentIntoDB;
+}
+

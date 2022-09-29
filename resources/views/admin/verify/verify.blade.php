@@ -41,11 +41,19 @@
                     Credentials
                 </div>
                 <div class="card-body">
-                    <form method="POST" enctype="multipart/form-data" action="/verifyUser-verify">
+                    <form method="POST" enctype="multipart/form-data" action="/verifyUser-verify/{{$data->id}}">
                         @csrf
                         <div class="container">
                             <div class="row">
                                 <div class="col-4">
+                                    <div class="mb-3">
+                                        <div class="h6">Full Name</div>
+                                        <div class="small">{{$data->full_name}}</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="h6">Email</div>
+                                        <div class="small">{{$data->email}}</div>
+                                    </div>
                                     <div class="mb-3">
                                         <div class="h6">Program Studi</div>
                                         <div class="small">{{$data->study_program}}</div>
@@ -77,8 +85,12 @@
                                         <div class="small">{{$data->birth_place}}</div>
                                     </div>
                                     <div class="mb-3">
-                                        <div class="h6">Domicile</div>
-                                        <div class="small">{{$data->domicile}}</div>
+                                        <div class="h6">Birth Date</div>
+                                        <div class="small">{{$data->birth_date}}</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="h6">NSN</div>
+                                        <div class="small">{{$data->nsn}}</div>
                                     </div>
 
                                     <div class="mb-3">
@@ -86,12 +98,20 @@
                                         <div class="small">{{$data->financier}}</div>
                                     </div>
                                     <div class="mb-3">
-                                        <div class="h6">Job</div>
-                                        <div class="small">{{$data->job}}</div>
-                                    </div>
-                                    <div class="mb-3">
                                         <div class="h6">Income</div>
                                         <div class="small">{{$data->income}}</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="h6">Gender</div>
+                                        <div class="small">{{$data->gender}}</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="h6">Living Partner</div>
+                                        <div class="small">{{$data->living_partner}}</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="h6">University Origin</div>
+                                        <div class="small">{{$data->university_of_origin}}</div>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -111,6 +131,12 @@
                                         <div class="h6">Mother's Occupation</div>
                                         <div class="small">{{$data->mother_occupation}}</div>
                                     </div>
+                                    <div class="mb-3">
+                                        <div class="h6">Occupation</div>
+                                        <div class="small">
+                                            {{$data->occupation}}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -122,109 +148,109 @@
                             <div class="row">
                                 <div class="col-10">
                                     <div class="h6">Integrity Pact</div>
-                                    <img src="{{ asset('assets/img/documents/'.$data->integrity_pact) }}"
+                                    <img src={{$data->integrity_pact_link}}
                                     class="img-fluid imeg">
                                     <div class="small p-0 m-0">
                                         <a class="text-decoration-underline text-link"
                                             target="_blank"
-                                            href="/download/{{$data->integrity_pact}}">
+                                            href={{$data->integrity_pact_link}}>
                                             {{$data->integrity_pact}}
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col d-flex justify-content-center">
-                                    <input type="checkbox" name="valid[]" value="integrity_pact">
+                                    <input type="checkbox" name="valid[]" value="integrity_pact"  class="valid">
                                 </div>
                             </div>
                             <div class="row mt-5">
                                 <div class="col-10">
                                     <div class="h6">NIN Card</div>
-                                    <img src="{{ asset('assets/img/documents/'.$data->nin_card) }}"
+                                    <img src={{$data->nin_card_link}}
                                     class="img-fluid imeg">
                                     <div class="small p-0 m-0">
                                         <a class="text-decoration-underline text-link"
                                         target="_blank"
-                                            href="/download/{{$data->nin_card}}">
+                                            href={{$data->nin_card_link}}>
                                             {{$data->nin_card}}
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col d-flex justify-content-center">
-                                    <input type="checkbox" name="valid[]" value="nin_card">
+                                    <input type="checkbox" name="valid[]" value="nin_card"  class="valid">
                                 </div>
                             </div>
                             <div class="row mt-5">
                                 <div class="col-10">
                                     <div class="h6">Family Card</div>
-                                    <img src="{{ asset('assets/img/documents/'.$data->family_card) }}"
+                                    <img src={{$data->family_card_link}}
                                     class="img-fluid imeg">
                                     <div class="small p-0 m-0">
                                         <a class="text-decoration-underline text-link"
                                             target="_blank"
-                                            href="/download/{{$data->family_card}}">
+                                            href={{$data->family_card_link}}>
                                             {{$data->family_card}}
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col d-flex justify-content-center">
-                                    <input type="checkbox" name="valid[]" value="family_card">
+                                    <input type="checkbox" name="valid[]" value="family_card"  class="valid">
                                 </div>
                             </div>
                             <div class="row mt-5">
                                 <div class="col-10">
                                     <div class="h6">Certificate</div>
-                                    <img src="{{ asset('assets/img/documents/'.$data->certificate) }}"
+                                    <img src={{$data->certificate_link}}
                                     class="img-fluid imeg">
                                     <div class="small p-0 m-0">
                                         <a class="text-decoration-underline text-link"
                                             target="_blank"
-                                            href="/download/{{$data->certificate}}">
+                                            href={{$data->certificate}}>
                                             {{$data->certificate}}
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col d-flex justify-content-center">
-                                    <input type="checkbox" name="valid[]" value="certificate">
+                                    <input type="checkbox" name="valid[]" value="certificate"  class="valid">
                                 </div>
                             </div>
                             <div class="row mt-5">
                                 <div class="col-10">
                                     <div class="h6">Photo</div>
-                                    <img src="{{ asset('assets/img/documents/'.$data->photo) }}"
+                                    <img src={{$data->photo_link}}
                                     class="img-fluid imeg">
                                     <div class="small p-0 m-0">
                                         <a class="text-decoration-underline text-link"
                                             target="_blank"
-                                            href="/download/{{$data->photo}}">
+                                            href={{$data->photo_link}}>
                                             {{$data->photo}}
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col d-flex justify-content-center">
-                                    <input type="checkbox" name="valid[]" value="photo">
+                                    <input type="checkbox" name="valid[]" value="photo"  class="valid">
                                 </div>
                             </div>
                             <div class="row mt-5">
                                 <div class="col-10">
                                     <div class="h6">Transcript</div>
-                                    <img src="{{ asset('assets/img/documents/'.$data->transcript) }}"
+                                    <img src={{$data->transcript_link}}
                                     class="img-fluid imeg">
                                     <div class="small p-0 m-0">
                                         <a class="text-decoration-underline text-link"
                                             target="_blank"
-                                            href="/download/{{$data->transcript}}">
+                                            href={{$data->transcript_link}}>
                                             {{$data->transcript}}
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col d-flex justify-content-center">
-                                    <input type="checkbox" name="valid[]" value="transcript">
+                                    <input type="checkbox" name="valid[]" value="transcript" class="valid" >
                                 </div>
                             </div>
                             <div class="row mt-5">
                                 <div class="col-10">
                                     <div class="h6">Recommendation Letter</div>
-                                    <img src="{{ asset('assets/img/documents/'.$data->recommendation_letter) }}"
+                                    <img src={{$data->recommendation_letter_link}}
                                     class="img-fluid imeg">
                                     <div class="small p-0 m-0">
                                         <a class="text-decoration-underline text-link"
@@ -235,12 +261,11 @@
                                     </div>
                                 </div>
                                 <div class="col d-flex justify-content-center">
-                                    <input type="checkbox" name="valid[]" value="reccomendation_letter">
+                                    <input type="checkbox" name="valid[]" value="recommendation_letter"  class="valid">
                                 </div>
                             </div>
-
                         </div>
-                        <button type="submit" class="btn bg-gradient-success btn-sm p-2 mt-4">
+                        <button type="submit" class="btn bg-gradient-success btn-sm p-2 mt-4" id="submit" disabled  >
                             <i class="fas fa-check"></i>
                             Verify
                         </button>
@@ -255,14 +280,22 @@
     </div>
 @endsection
 
-<script>
-   const images = document.getElementsByClassName('imeg');
-   for(var i = 0; i < 1; i++) {
-    console.log(1)
-    console.log(images[i])
-    images[i].addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log("dada")
-    })
-   }
-</script>
+@section('sweetalert')
+    <script>
+        $(function(){
+            $('.valid').click(function(){
+                var val = []
+                $(':checkbox:checked').each(function(i){
+                    val[i] = $(this).val()
+                })
+                if(val.length<8){
+                    document.getElementById("submit").setAttribute("disabled","disabled")
+                }
+                if(val.length===8){
+                    console.log("enable")
+                    document.getElementById("submit").removeAttribute("disabled")
+                }
+            })
+        })
+    </script>
+@endsection

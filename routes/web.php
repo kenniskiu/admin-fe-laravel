@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // administration
     Route::get('/verifyUser', [VerifyController::class, 'index']);
-    Route::post('/verifyUser-verify', [VerifyController::class, 'verify']);
+    Route::post('/verifyUser-verify/{id}', [VerifyController::class, 'verify']);
     Route::get('/verifyUser-files/{id}', [VerifyController::class, 'files']);
     Route::get('/download/{filename}', [VerifyController::class, 'downloadFile']);
 
@@ -125,4 +125,5 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/test', function () {
     return view('admin.Table');
 });
+
 

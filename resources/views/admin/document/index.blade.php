@@ -74,8 +74,8 @@
                                     <td class="text-sm font-weight-normal col-lg-1">
                                         {{ $loop->iteration }}
                                     </td>
-                                    <td class="text-sm font-weight-normal">
-                                        {{ $x->file }}
+                                    <td class="text-sm font-weight-normal text-decoration-underline">
+                                        <a href={{{$x->link}}} target="_blank">{{ $x->file }}</a>
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         {{ $x->description }}

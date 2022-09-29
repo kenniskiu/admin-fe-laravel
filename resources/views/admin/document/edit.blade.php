@@ -48,36 +48,17 @@
                         @csrf
                         <div class="container">
                             <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Session ID</label>
-                                        <input name="session_id" type="text" value={{$data->session_id}} class="form-control" placeholder="Session ID" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Duration</label>
-                                        <input name="duration" type="text" class="form-control" value={{$data->duration}} placeholder="Duration" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label>File</label>
+                                    <input type="file" class="form-control w-50" name="file" value={{$data->file}}>
                                 </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Document ID</label>
-                                        <input name='document_id' value='' class="form-control" value={{$data->duration}} placeholder="Document ID">
-                                    </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input class="form-control w-50" name="description" value={{$data->description}}>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group container">
-                            <label>Description</label>
-                            <input name="description" type="text" class="form-control" value={{$data->description}} placeholder="Description" required>
-                        </div>
-                        <div class="form-group container">
-                            <label>Content</label>
-                            <textarea name='content' class="form-control" value={{$data->content}} placeholder="Content" rows="4" cols="50">
-                            {{$data->content}}
-                            </textarea>
-                        </div>
-
-                        <a href="/Document" type="button" class="btn btn-outline-primary btn-sm mb-0">
+                        <a href="/document" type="button" class="btn btn-outline-primary btn-sm mb-0">
                             Back
                         </a>
                         <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">

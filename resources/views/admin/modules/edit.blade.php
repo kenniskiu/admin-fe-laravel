@@ -56,7 +56,6 @@
                                             @foreach ($session as $x)
                                                 <option value="{{ $x->id }}">{{ $x->subject->name }} session no: {{$x->session_no}}</option>
                                             @endforeach
-
                                         </select>
                                     </div>
                                     <div class="form-group">

@@ -18,13 +18,9 @@ class Modules extends Model
         'video_id',
         'document_id',
     ];
-    protected $casts = [
-        'document_id' => PgsqlArray::class
-    ];
 
     public function session()
     {
         return $this->belongsTo(Session::class, 'session_id');
     }
-
 }

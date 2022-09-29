@@ -6,6 +6,11 @@ use App\Models\Document;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\DB;
+use Kreait\Firebase\Auth as FirebaseAuth;
+use Kreait\Firebase\Auth\SignInResult\SignInResult;
+use Kreait\Firebase\Exception\FirebaseException;
+use Google\Cloud\Firestore\FirestoreClient;
+use Session;
 
 class DocumentController extends Controller
 {
@@ -22,7 +27,6 @@ class DocumentController extends Controller
                 'data' => $data,
             ]);
         } catch (\Throwable $th) {
-            dd($th);
             return redirect('/document')->with('toast_error',  'Halaman tidak dapat di akses!');
         }
     }
@@ -53,17 +57,47 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         try {
+            $request->validate([
+                'file' => 'required',
+            ]);
             $input = $request->all();
-            if($request->hasFile('file')){
-                $image = $request->file('file');
-                $image_name = $image->getClientOriginalName();
-                $input['file'] = $image_name;
+            $file = $request->file('file');
+            $originalFileName = $file->getClientOriginalName();
+            $rawFileName = pathinfo($originalFileName, PATHINFO_FILENAME);
+
+            $document   = app('firebase.firestore')->database()->collection('module_documents')->document($rawFileName);
+            $firebase_storage_path = 'module_documents/';
+            $name = $document->id();
+            $localfolder = public_path('firebase-temp-uploads') .'/';
+            $extension = $file->getClientOriginalExtension();
+
+            if(!in_array($extension,['pdf','doc','docx'])){
+                return redirect('/document')->with('toast_error', 'Wrong File Format');
+            }
+
+            $fileName = $name. '.' . $extension;
+
+            if ($file->move($localfolder, $fileName)) {
+                $uploadedfile = fopen($localfolder.$fileName, 'r');
+                app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path . $fileName]);
+                unlink($localfolder . $fileName);
+                Session::flash('message', 'Succesfully Uploaded');
+            }
+            $filePath = "module_documents/".$fileName;
+            $expiresAt = new \DateTime('12th December Next Year');
+            $linkReference = app('firebase.storage')->getBucket()->object($filePath);
+            if ($linkReference->exists()) {
+                $link = $linkReference->signedUrl($expiresAt);
+              } else {
+                $link = null;
             }
             Document::create([
-                'description'=>$input['description'],
-                'file'=>$input['file']
+                'file' => $originalFileName,
+                'description' => $data->description,
+                'link'=> $link
             ]);
-        return redirect('/document')->with('toast_success', 'Data berhasil ditambah!');
+
+            return redirect('/document')->with('toast_success', 'Data berhasil ditambah!');
         } catch (\Throwable $th) {
             dd($th);
             return redirect('/document')->with('toast_error',  'Data tidak berhasil ditambah!');
@@ -79,7 +113,7 @@ class DocumentController extends Controller
     public function edit($id)
     {
         try {
-            $data = Document::all();
+            $data = Document::find($id);
 
             return view('admin.document.edit', [
                 'data' => $data,

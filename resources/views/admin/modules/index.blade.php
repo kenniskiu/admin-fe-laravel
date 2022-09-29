@@ -76,22 +76,30 @@
                                 <td class="text-sm font-weight-normal col-lg-1">
                                     {{ $loop->iteration }}
                                 </td>
-                                <td class="text-sm font-weight-normal">
+                                <td class="text-sm font-weight-normal m-0 p-0">
                                     {{ $x->session->subject->name }} session No: {{$x->session->session_no}}
                                 </td>
-                                <td class="text-sm font-weight-normal p-0">
-                                    <ul>
-                                        @foreach ($video as $v)
-                                            <li>{{$v->description}}</li>
-                                        @endforeach
-                                    </ul>
-                                </td>
                                 <td class="text-sm font-weight-normal p-0 m-0">
-                                    <ul>
-                                        @foreach ($fileName as $y)
-                                            <li>{{$y->file}}</li>
-                                        @endforeach
-                                    </ul>
+                                    @if (empty($x->video_id)==true)
+                                        No videos
+                                    @elseif(empty($x->video_id)==false)
+                                        <ul>
+                                            @foreach ($x->video_id as $video)
+                                                <li>{{$video}}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </td>
+                                <td class="text-sm font-weight-normal px-0">
+                                    @if (empty($x->document_id)==true)
+                                        No videos
+                                    @elseif(empty($x->document_id)==false)
+                                        <ul>
+                                            @foreach ($x->document_id as $document)
+                                                <li>{{$document}}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </td>
                                 <td class="text-sm col-lg-2 p-0 m-0">
                                     <a href="/modules-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"

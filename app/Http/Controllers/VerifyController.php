@@ -8,6 +8,9 @@ use PhpParser\Node\Stmt\TryCatch;
 use App\Models\Administration;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Students;
+use App\Models\Major    ;
+
 class VerifyController extends Controller
 {
     /**
@@ -18,18 +21,13 @@ class VerifyController extends Controller
     public function index()
     {
         try {
-            // $verificationData = DB::table('administrations')
-            //                         ->join('users','users.user_id','=','administrations.id');
-            $verificationData = Administration::join('users','users.id','=','Administrations.user_id')
-                                ->get(['users.full_name','Administrations.*']);
-            // $verificationData = Administration::all();
+            $verificationData = Administration::where('is_approved',"waiting")->get();
             return view('admin.verify.index',[
                 'data'=>$verificationData
             ]);
-            // dd($verificationData);
         } catch (\Throwable $th) {
             dd($th);
-            return redirect('/dashboard-admin')->with('toast_error',  'Halaman tidak dapat di akses!');
+            return redirect('/dashboard-admin')->with('toast_error', 'Halaman tidak dapat di akses!');
         }
     }
     public function showFiles($id){
@@ -39,8 +37,6 @@ class VerifyController extends Controller
     public function files($id)
     {
         try {
-            // $data = Administration::join('users','users.id','=','administrations.user_id')
-            //                     ->get(['users.full_name','administrations.*']);
             $data = Administration::find($id);
             return view('admin.verify.verify', [
                 'data' => $data
@@ -60,7 +56,28 @@ class VerifyController extends Controller
             exit('Requested file does not exist on our server!');
         }
     }
-    public function verify(Request $request){
-        dd($request->all());
+    public function verify(Request $request,$id){
+        $documentsRequired = array("integrity_pact","nin_card","family_card","certificate","photo","transcript","recommendation_letter");
+        $result = array_diff($documentsRequired,$request->valid);
+        if(count($result)==0){
+            Administration::where('id', $id)->update([
+                'is_approved'=>"approved"
+            ]);
+            $user = Administration::where('id',$id)->get(['user_id','study_program']);
+            $majorID = Major::where('name',$user[0]->study_program)->get(['id']);
+            $majorIDInserted = "{".$majorID[0]->id."}";
+            Students::create([
+                'user_id'=> $user[0]->user_id,
+                'major_id'=> $majorIDInserted
+            ]);
+            return  redirect('/verifyUser')->with('toast_success', 'Telah diverifikasi');
+        }
+        if(count($result)!=0){
+            Administration::where('id', $id)->update([
+                'is_approved'=>"rejected",
+                'rejected_files'=>$result
+            ]);
+            return  redirect('/verifyUser')->with('toast_error', 'Ditolak');
+        }
     }
 }

@@ -15,6 +15,7 @@ class Document extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         'file',
-        'description'
+        'description',
+        'link'
     ];
 }
