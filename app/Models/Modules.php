@@ -18,9 +18,12 @@ class Modules extends Model
         'video_id',
         'document_id',
     ];
-
     public function session()
     {
         return $this->belongsTo(Session::class, 'session_id');
+    }
+    public function document()
+    {
+        return $this->hasMany(Document::class,'document_id');
     }
 }

@@ -18,8 +18,11 @@ class SubjectController extends Controller
     {
         try {
             $data = Subject::all();
+            $lecturer = Lecturers::all();
+            $test = convertPsqlArray($data,"lecturer");
             return view('admin.subject.index', [
-                'data' => $data
+                'data' => $data,
+                'lecturer'=>$lecturer
             ]);
             // dd($data);
         } catch (\Throwable $th) {

@@ -24,6 +24,8 @@ class ModuleController extends Controller
     {
         try {
             $data = Modules::all();
+            $document = Document::all();
+            $video = Video::all();
             $docTaken = DB::select('SELECT id, session_id ,
                         array_to_json(video_id) as video_id,
                         array_to_json(document_id) as document_id
@@ -43,6 +45,8 @@ class ModuleController extends Controller
             }
             return view('admin.modules.index', [
                 'data' => $data,
+                'video' => $video,
+                'document' => $document
             ]);
         } catch (\Throwable $th) {
             dd($th);

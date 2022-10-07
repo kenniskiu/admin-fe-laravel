@@ -13,6 +13,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\KRSController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -119,6 +120,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/video-destroy/{id}', [VideoController::class, 'destroy']);
     Route::get('/video-edit/{id}', [VideoController::class, 'edit']);
     Route::post('/video-update/{id}', [VideoController::class, 'update']);
+
+    //KRS
+    Route::get('/krs', [KRSController::class, 'index']);
+    Route::get('/krs-create', [KRSController::class, 'create']);
+    Route::post('/krs-store', [KRSController::class, 'store']);
+    Route::get('/krs-destroy/{id}', [KRSController::class, 'destroy']);
+    Route::get('/krs-edit/{id}', [KRSController::class, 'edit']);
+    Route::post('/krs-update/{id}', [KRSController::class, 'update']);
+
 
 });
 // Tidak perlu login pun bisa di akses :)

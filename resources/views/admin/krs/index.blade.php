@@ -27,9 +27,9 @@
             </li>
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Curriculum</a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Modules</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">KRS</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Modules</h6>
+        <h6 class="font-weight-bolder mb-0">KRS</h6>
     </nav>
 
     <div class="row mt-4">
@@ -39,15 +39,15 @@
                 <div class="card-header pb-0">
                     <div class="d-lg-flex">
                         <div>
-                            <h5 class="mb-0">Modules</h5>
+                            <h5 class="mb-0">KRS</h5>
                             {{-- <p class="text-sm mb-0">
                                 A lightweight, extendable, dependency-free javascript HTML table plugin.
                             </p> --}}
                         </div>
                         <div class="ms-auto my-auto mt-lg-0 mt-4">
                             <div class="ms-auto my-auto">
-                                <a href="/modules-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
-                                    New modules
+                                <a href="/krs-create" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp;
+                                    New KRS
                                 </a>
                             </div>
                         </div>
@@ -59,15 +59,13 @@
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Subject's
-                                    Session
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Student's
+                                    UUID
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Video ID
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Student's
+                                    Name
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Document ID
-                                </th>
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Preview
                                 </th>
                             </tr>
                         </thead>
@@ -77,54 +75,16 @@
                                     <td class="text-sm font-weight-normal col-lg-1">
                                         {{ $loop->iteration }}
                                     </td>
-                                    <td class="text-sm font-weight-normal m-0 p-0">
-                                        {{ $x->session->subject->name }} session No: {{ $x->session->session_no }}
+                                    <td class="text-sm font-weight-normal col-lg-1">
+                                        {{ $x->student_id }}
                                     </td>
-                                    <td class="text-sm font-weight-normal p-0 m-0">
-                                        @if (empty($x->video_id) == true)
-                                            No videos
-                                        @elseif(empty($x->video_id) == false)
-                                            <ul>
-                                                @foreach ($x->video_id as $y)
-                                                    @foreach ($video as $z)
-                                                        @if ($y == $z->id)
-                                                            <li>
-                                                                <a href="{{ $z->url }}" target="blank">
-                                                                    {{ $z->description }}
-                                                                </a>
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
-                                                @endforeach
-                                            </ul>
-                                        @endif
+                                    <td class="text-sm font-weight-normal col-lg-1">
+                                        {{ $x->student->user->full_name }}
                                     </td>
-                                    <td class="text-sm font-weight-normal px-0">
-                                        @if (empty($x->document_id) == true)
-                                            No videos
-                                        @elseif(empty($x->document_id) == false)
-                                            <ul>
-                                                @foreach ($x->document_id as $y)
-                                                    @foreach ($document as $z)
-                                                        @if ($y == $z->id)
-                                                            <li>
-                                                                <a href="{{ $z->link }}" target="blank"
-                                                                    class="text-decoration-underline text-primary">{{ $z->file }}</a>
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </td>
-                                    <td class="text-sm col-lg-2 p-0 m-0">
-                                        <a href="/modules-edit/{{ $x->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                    <td class="text-sm col-lg-2">
+                                        <a href="/krs-edit/{{ $x->student_id }}" class="mx-3" data-bs-toggle="tooltip"
                                             data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="delete-subject" data-id="{{ $x->id }}"
-                                            type="button" data-bs-toggle="tooltip" data-bs-original-title="Delete">
-                                            <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -152,7 +112,7 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         //Memanggil routes delete"
-                        window.location = "/modules-destroy/" + id + "";
+                        window.location = "/krs-destroy/" + id + "";
                         swal("Data Anda telah dihapus!", {
                             icon: "success",
                         });

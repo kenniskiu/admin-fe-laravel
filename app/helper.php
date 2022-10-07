@@ -136,4 +136,20 @@ function storeDocumentIntoDB($data){
     $documentIntoDB.="}";
     return $documentIntoDB;
 }
-
+function convertPsqlArray($data,$attribute){
+    for($i=0;$i<count($data);$i++){
+        $arrayCount = 0;
+        $emptyArray = [];
+        if(strlen($data[$i]->lecturer)!=0){
+            $arrayCount = 1;
+            $arrayCount+=substr_count($data[$i]->lecturer, ',');
+            for($j=0;$j<$arrayCount;$j++){
+                $firstIndex = 1 + 36*$j + $j;
+                $arrayItem = substr($data[$i]->lecturer,$firstIndex,36);
+                array_push($emptyArray,$arrayItem);
+            }
+            $data[$i]->lecturer = $emptyArray;
+        }
+    }
+    return $data;
+}
